@@ -1,6 +1,11 @@
 // Controller of expense dashboard page.
 appControllers.controller('profileDashboardCtrl', function ($scope,$state,$stateParams) {
 
+    //Google Analytics
+    if(typeof analytics !== 'undefined') {
+        analytics.trackView('Profil');
+    }
+
     //$scope.isAnimated is the variable that use for receive object data from state params.
     //For enable/disable row animation.
     $scope.isAnimated =  $stateParams.isAnimated;

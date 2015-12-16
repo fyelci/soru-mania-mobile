@@ -33,7 +33,6 @@ window.globalVariable = {
 angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'LocalStorageModule', 'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource'])
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, $window, Auth, Principal) {
 
-
         // Create custom defaultStyle.
         function getDefaultStyle() {
             return "" +
@@ -186,6 +185,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 // Add custom style ti view.
                 $rootScope.customStyle = createCustomStyle($ionicHistory.currentStateName());
             });
+
+            /*
+            if(typeof analytics !== 'undefined') {
+                analytics.startTrackerWithId("UA-70896425-1");
+            } else {
+                console.log("Google Analytics Unavailable");
+            }
+            */
+
         });
 
         //AUTH START
@@ -337,7 +345,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                 url: "/home",
                 views: {
                     'menuContent': {
-                        templateUrl: "templates/home/home.html"
+                        templateUrl: "templates/home/home.html",
+                        controller: "HomeController"
                     }
                 }
             })

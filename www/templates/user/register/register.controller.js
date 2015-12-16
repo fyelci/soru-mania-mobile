@@ -2,6 +2,11 @@
 
 appControllers
     .controller('RegisterController', function ($scope, $state, $timeout, $mdToast, Auth) {
+        //Google Analytics
+        if(typeof analytics !== 'undefined') {
+            analytics.trackView('Yeni Kayıt Ekranı');
+        }
+
         $scope.success = null;
         $scope.error = null;
         $scope.doNotMatch = null;

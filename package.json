@@ -20,10 +20,6 @@
   "cordovaPlugins": [
     "cordova-plugin-splashscreen",
     {
-      "locator": "https://github.com/floatinghotpot/cordova-plugin-admob.git",
-      "id": "cordova-plugin-admob"
-    },
-    {
       "locator": "https://github.com/litehelpers/Cordova-sqlite-storage.git",
       "id": "cordova-sqlite-storage"
     },
@@ -58,7 +54,9 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-transport-security",
     "cordova-plugin-inappbrowser",
-    "com.ionic.keyboard"
+    "com.ionic.keyboard",
+    "com.google.admobsdk",
+    "cordova-plugin-admob"
   ],
   "cordovaPlatforms": [
     "android",

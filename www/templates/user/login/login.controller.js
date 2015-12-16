@@ -2,6 +2,12 @@
 
 appControllers
     .controller('LoginController', function ($rootScope, $scope, $state, $timeout, $mdToast, Auth) {
+
+        //Google Analytics
+        if(typeof analytics !== 'undefined') {
+            analytics.trackView('Login Ekranı');
+        }
+
         $scope.user = {};
         $scope.errors = {};
 

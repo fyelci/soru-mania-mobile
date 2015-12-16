@@ -48,6 +48,16 @@ appServices
                             // now, send them to the signin state so they can log in
                             $state.go('app.login');
                         }
+
+                        if(isAuthenticated) {
+                            //Google Analytics
+                            if(typeof analytics !== 'undefined') {
+                                var user = Principal.identity();
+                                console.log('In authorize for GA');
+                                console.log(user);
+                                analytics.setUserId(user.login);
+                            }
+                        }
                     });
             },
             createAccount: function (account, callback) {
