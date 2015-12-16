@@ -1,0 +1,36 @@
+<!--View Information-->
+<!--View name : Fake Login-->
+<!--State name : app.fakeLogin-->
+<!--URL : #app/fakeLogin-->
+
+<ion-view title="Giriş Yap">
+    <!--login content section-->
+    <ion-content id="social-login" class="bg-white">
+        <!--fake login form section-->
+        <form name="form" class="fakeLogin-form" ng-submit="login($event)">
+            <div>
+                <img src="img/app_icon.png"/>
+            </div>
+            <div class="sub-header">Soru Mania'ya giriş yap</div>
+
+            <div id="fakeLogin">
+                <md-input-container md-no-float="">
+                    <input class="user-name" placeholder="Kullanıcı Adı" ng-model="user.username" required>
+                </md-input-container>
+                <hr/>
+                <md-input-container md-no-float="">
+                    <input class="user-password" type="password" placeholder="Şifre" ng-model="user.password" required>
+                </md-input-container>
+            </div>
+            <div>
+                <button type="submit" class="md-raised social-button md-button md-default-theme material-background"
+                        ng-disabled="form.$invalid">
+                    Giriş
+                </button>
+            </div>
+        </form> <!--end fake login form section-->
+        <div>
+            <a ui-sref="app.register">Hesap Oluştur</a>
+        </div>
+    </ion-content><!--end login content section-->
+</ion-view>

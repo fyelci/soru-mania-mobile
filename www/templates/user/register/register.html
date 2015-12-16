@@ -1,0 +1,70 @@
+<!--View Information-->
+<!--View name : Fake Sign Up-->
+<!--State name : app.fakeSignUp-->
+<!--URL : #app/fakeSignUp-->
+
+<ion-view title="Material Design">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <!--social sign up section-->
+    <ion-content id="social-sign-up-content">
+        <div class="app-icon">
+            <img src="img/app_icon.png" class="md-card-image">
+        </div>
+        <form name="form" novalidate ng-submit="register()">
+            <!--input section-->
+
+
+            <md-input-container md-no-float="">
+                <div>
+                    <input type="text" id="login" name="login"
+                            class="user-name"
+                           placeholder="Kullanıcı Adı"
+                           ng-model="registerAccount.login"
+                           ng-minlength=1
+                           ng-maxlength=50
+                           ng-pattern="/^[a-z0-9]*$/" required>
+                    <div ng-messages="form.login.$error" ng-if="form.login.$dirty">
+                        <div ng-message="required">Kullanıcı Adı Zorunlu</div>
+                        <div ng-message="pattern">Kullanıcı adı sadece ingilizce karakter ve rakam içerebilir.</div>
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container md-no-float="">
+                <div>
+                    <input class="user-name" placeholder="E-posta" type="email"
+                           id="email" name="email"
+                           ng-model="registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
+                    <div ng-messages="form.email.$error" ng-if="form.email.$dirty">
+                        <div ng-message="minlength">E-Posta en az 5 karakter olmalıdır!</div>
+                        <div ng-message="required">E-Posta zorunludur!</div>
+                    </div>
+                </div>
+            </md-input-container>
+            <md-input-container md-no-float="">
+                <div>
+                    <input type="password" class="user-name" placeholder="Şifre"
+                           id="password" name="password"
+                           ng-model="registerAccount.password" ng-minlength=5 ng-maxlength=50 required>
+                    <div ng-messages="form.password.$error" ng-if="form.password.$dirty">
+                        <div ng-message="minlength">Şifre en az 5 karakter olmalıdır!</div>
+                        <div ng-message="required">Şifre zorunludur!</div>
+                    </div>
+                </div>
+            </md-input-container>
+            <md-checkbox aria-label="CheckboxTerms" ng-model="registerAccount.accept" required>
+                I accept terms and conditions.
+            </md-checkbox>
+            <!--end input section-->
+            <button type="submit" ng-disabled="form.$invalid" class="md-raised social-button md-button md-default-theme material-background">
+                Kayıt Ol
+            </button>
+        </form>
+
+    </ion-content><!--end social sign up section-->
+</ion-view>
