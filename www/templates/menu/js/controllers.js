@@ -33,7 +33,7 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
     // by using targetPage to be the destination state. 
     // Parameter :  
     // stateNames = target state to go
-    $scope.navigateTo = function (stateName) {
+    $scope.navigateTo = function (stateName, username) {
         $timeout(function () {
             $mdSidenav('left').close();
             if ($ionicHistory.currentStateName() != stateName) {
@@ -41,7 +41,11 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
                     disableAnimate: true,
                     disableBack: true
                 });
-                $state.go(stateName);
+                if(!username) {
+                    $state.go(stateName);
+                } else {
+                    $state.go(stateName, {username: username});
+                }
             }
         }, ($scope.isAndroid == false ? 300 : 0));
     };// End navigateTo.

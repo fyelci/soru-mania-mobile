@@ -232,7 +232,7 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
 
     })
 
-    .config(function ($ionicConfigProvider, $httpProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, $mdGestureProvider, $mdIconProvider) {
+    .config(function ($ionicConfigProvider, $httpProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, $mdGestureProvider) {
 
         //Prevent double fire for material buttons...
         $mdGestureProvider.skipClickHijack();
@@ -241,6 +241,10 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         // Use for change ionic spinner to android pattern.
         $ionicConfigProvider.spinner.icon("android");
         $ionicConfigProvider.views.swipeBackEnabled(false);
+
+        //Tablarin ekranin altinda gornmesi icin
+        $ionicConfigProvider.tabs.position('bottom');
+
 
         // mdIconProvider is function of Angular Material.
         // It use for reference .SVG file and improve performance loading.
@@ -343,6 +347,9 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             })
             .state('app.home', {
                 url: "/home",
+                params: {
+                    message: null,
+                },
                 views: {
                     'menuContent': {
                         templateUrl: "templates/home/home.html",
@@ -350,8 +357,38 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
+            .state('app.question', {
+                url: "/question/{id}",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/question/question.html",
+                        controller: "QuestionController"
+                    }
+                }
+            })
+            .state('app.ask-question', {
+                url: "/ask-question",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/question/ask-question.html",
+                        controller: "AskQuestionController"
+                    }
+                }
+            })
+            .state('app.comment', {
+                url: "/question/{questionId}/comment",
+                params: {
+                    question: null,
+                },
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/question/comment.html",
+                        controller: "CommentController"
+                    }
+                }
+            })
             .state('app.profile', {
-                url: "/profile",
+                url: "/profile/{username}",
                 params:{
                     isAnimated:true
                 },
@@ -377,77 +414,6 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     'menuContent': {
                         templateUrl: "templates/material-user-interface/dashboard/html/dashboard-setting.html",
                         controller: "dashboardSettingCtrl"
-                    }
-                }
-            })
-            .state('app.contractlist', {
-                url: "/contractlist",
-                cache: false,
-                params:{
-                    isAnimated:true
-                },
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/application-storage/sqLite/html/contract-list.html",
-                        controller: 'contractListCtrl'
-                    }
-                }
-            })
-            .state('app.contractdetail', {
-                url: "/contractdetail",
-                params: {
-                    contractdetail: null,
-                    actionDelete: false
-                },
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/application-storage/sqLite/html/contract-detail.html",
-                        controller: 'contractDetailCtrl'
-                    }
-                }
-            })
-            .state('app.contractsetting', {
-                url: "/contractsetting",
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/application-storage/sqLite/html/contract-setting.html",
-                        controller: 'contractSettingCtrl'
-                    }
-                }
-            })
-            .state('app.notelist', {
-                url: "/notelist",
-                params:{
-                    isAnimated:false
-                },
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/application-storage/local-application-db/html/note-list.html",
-                        controller: 'noteListCtrl'
-                    }
-                }
-            })
-            .state('app.notedetail', {
-                url: "/notedetail",
-                params: {
-                    noteDetail: null,
-                    actionDelete: false
-                },
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/application-storage/local-application-db/html/note-detail.html",
-                        controller: 'noteDetailCtrl'
-                    }
-                }
-            })
-            .state('app.notesetting', {
-                url: "/notesetting",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/application-storage/local-application-db/html/note-setting.html",
-                        controller: 'noteSettingCtrl'
                     }
                 }
             })
@@ -494,24 +460,6 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-            .state('app.fakeLogin', {
-                url: "/fakeLogin",
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/fake-login.html"
-                    }
-                }
-            })
-            .state('app.fakeSignUp', {
-                url: "/fakeSignUp",
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/themes/authentication/html/fake-sign-up.html"
-                    }
-                }
-            })
             .state('app.productList', {
                 url: "/productList",
                 views: {
@@ -542,68 +490,12 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     }
                 }
             })
-            .state('app.contractUs', {
-                url: "/contractUs",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/share-application-content/email-message/html/contract-us.html",
-                        controller: 'contractUsCtrl'
-                    }
-
-                }
-            })
-            .state('app.deviceInformation', {
-                url: "/deviceInformation",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/hardware-connect/device-information/html/device-information.html",
-                        controller: 'deviceInformationCtrl'
-                    }
-
-                }
-            })
-            .state('app.mobileContractList', {
-                url: "/mobileContractList",
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/hardware-connect/mobile-contract/html/mobile-contract-list.html",
-                        controller: 'mobileContractListCtrl'
-                    }
-
-                }
-            })
-            .state('app.mobileContractDetail', {
-                url: "/mobileContractDetail",
-                params: {
-                    contractDetail: null,
-                    actionDelete: false
-                },
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/hardware-connect/mobile-contract/html/mobile-contract-detail.html",
-                        controller: 'mobileContractDetailCtrl'
-                    }
-
-                }
-            })
             .state('app.googleAdmob', {
                 url: "/googleAdmob",
                 views: {
                     'menuContent': {
                         templateUrl: "templates/advertising-application/googleAdmob/html/googleAdmob.html",
                         controller: 'googleAdmobCtrl'
-                    }
-
-                }
-            })
-            .state('app.imagePicker', {
-                url: "/imagePicker",
-                cache: false,
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/hardware-connect/image-picker/html/image-picker.html",
-                        controller: 'imagePickerCtrl'
                     }
 
                 }

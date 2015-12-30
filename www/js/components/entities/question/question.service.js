@@ -1,8 +1,8 @@
 'use strict';
 
 appServices
-    .factory('Question', function ($resource, DateUtils) {
-        return $resource('api/questions/:id', {}, {
+    .factory('Question', function ($resource, DateUtils, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/questions/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

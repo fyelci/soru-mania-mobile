@@ -1,0 +1,128 @@
+<!--View Information-->
+<!--View name : Product Detail-->
+<!--Controller name : productDetailCtrl-->
+<!--Controller path : www/templates/share-application-content/social-share/js/controllers.js-->
+<!--State name : app.productDetail-->
+<!--URL : #app/productDetail-->
+
+<ion-view view-title="Soru Detay">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--product detail section-->
+    <ion-content id="product-detail-content" class="fade-in">
+        <md-content class="md-padding">
+            <div id="product-detail-tab-product">
+                <div>
+                    <h1>Başlık</h1>
+
+                    <p>Detay</p>
+                </div>
+                <!--pin section-->
+                <div class="pin">
+                    <img ng-src="{{question.mediaUrl}}"/>
+
+                    <p>
+                        {{question.detail}}
+                    </p>
+
+                    <div class="pin-footer">
+                        <span class="">Sınav: {{question.categoryName}}</span>
+                        <br/>
+                        <span class="">Ders: {{question.lessonName}}</span>
+                    </div>
+                    <a class="md-raised md-warn md-button md-default-theme"
+                       ng-click="answerQuestion()">
+                        Soruyu Cevapla
+                    </a>
+                </div>  <!--end pin section-->
+
+            </div>
+
+            <div ng-switch="question.commentList.length > 0">
+                <h2 ng-switch-when="true">Cevaplar</h2>
+                <h2 ng-switch-when="false">Henüz Cevap Yok</h2>
+                <i ng-switch-when="false" class="icon ion-sad-outline"></i>
+                <div>
+
+                </div>
+            </div>
+
+            <div id="product-detail-tab-comment" ng-repeat="comment in question.commentList">
+                <div>
+                    <p>{{comment.user.login}}</p>
+                </div>
+                <!--pin section-->
+                <div class="pin">
+                    <img ng-src="{{comment.mediaUrl}}"/>
+
+                    <p>
+                        {{comment.text}}
+                    </p>
+
+                    <a class="md-raised md-warn md-button md-default-theme"
+                       ng-click="replyToComment(comment)">
+                        Yorum Yap
+                    </a>
+                </div>  <!--end pin section-->
+
+            </div>
+
+        </md-content>
+    </ion-content>
+    <!--end product detail section-->
+
+    <!--loading progress-->
+    <div id="product-detail-loading-progress" class="loading-progress fade-in">
+        <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+        <md-progress-circular ng-if="isAndroid" md-mode="indeterminate"></md-progress-circular>
+    </div> <!--end loading progress-->
+
+    <!--canvas for save image to local devise-->
+    <canvas id="imgCanvas" class="display-none"></canvas>
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="bottom-sheet-shared.html">
+        <md-bottom-sheet class="md-grid">
+            <!--list section-->
+            <md-list id="bottom-sheet-grid-md-list">
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedFacebook()">
+                        <md-icon md-svg-src="facebook"></md-icon>
+                        <div class="md-grid-text"> Facebook</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedTwitter()">
+                        <md-icon md-svg-src="twitter"></md-icon>
+                        <div class="md-grid-text"> Twitter</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedMail()">
+                        <md-icon md-svg-src="mail"></md-icon>
+                        <div class="md-grid-text"> Mail</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="saveImage()">
+                        <i class="ion-android-image"></i>
+
+                        <div class="md-grid-text"> Save Image</div>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-grid-item-content" ng-click="sharedMore()">
+                        <md-icon md-svg-src="share-arrow"></md-icon>
+                        <div class="md-grid-text"> More</div>
+                    </a>
+                </md-list-item>
+            </md-list> <!--end list section-->
+        </md-bottom-sheet>
+    </script>
+    <!--end angular template section-->
+</ion-view>

@@ -661,6 +661,83 @@ md-sidenav {
   #social-sign-up-content a.social-button {
     width: 100%; }
 
+#comment-detail-tabs {
+  height: 760px;
+  min-height: 760px;
+  border: none; }
+
+#comment-detail-tab-detail div.detail-form {
+  margin: 10px 20px; }
+  #comment-detail-tab-detail div.detail-form div.product-detail-header {
+    margin-top: 20px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-header h1 {
+      font-size: 30px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-header p {
+      font-size: 16px;
+      color: gray;
+      line-height: normal; }
+  #comment-detail-tab-detail div.detail-form div.product-detail-price {
+    margin-left: 2px;
+    height: 80px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-price div.left {
+      font-size: 26px;
+      float: left;
+      margin-top: 12px;
+      line-height: 28px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-price div.right {
+      font-size: 26px;
+      float: right; }
+      #comment-detail-tab-detail div.detail-form div.product-detail-price div.right a {
+        width: 116px;
+        margin-top: 22px;
+        margin-right: 10px; }
+  #comment-detail-tab-detail div.detail-form div.product-detail-shipping {
+    border-top: #dbdbdb;
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-top: 16px;
+    height: 128px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-shipping div.col-67 {
+      font-size: 26px;
+      margin-top: 12px;
+      line-height: 28px;
+      width: 160px; }
+      #comment-detail-tab-detail div.detail-form div.product-detail-shipping div.col-67 p {
+        font-size: 16px;
+        color: gray;
+        margin: 0; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-shipping div.col-33 {
+      font-size: 22px;
+      text-align: center;
+      margin-top: 18px;
+      width: 120px; }
+      #comment-detail-tab-detail div.detail-form div.product-detail-shipping div.col-33 p {
+        margin-top: 15px;
+        font-weight: 500; }
+  #comment-detail-tab-detail div.detail-form div.product-detail-review {
+    border-top: #dbdbdb;
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-top: 10px;
+    padding-top: 20px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-review p {
+      font-size: 16px; }
+      #comment-detail-tab-detail div.detail-form div.product-detail-review p span {
+        color: #e3cf7a;
+        margin-left: 10px; }
+  #comment-detail-tab-detail div.detail-form div.product-detail-note {
+    border-top: #dbdbdb;
+    border-top-style: solid;
+    border-top-width: 1px;
+    margin-top: 10px;
+    padding-top: 20px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-note h1 {
+      font-size: 24px; }
+    #comment-detail-tab-detail div.detail-form div.product-detail-note p {
+      font-size: 16px;
+      color: gray;
+      margin: 0; }
+
 #product-detail-tabs {
   height: 760px;
   min-height: 760px;
@@ -744,8 +821,18 @@ md-sidenav {
     text-align: center;
     display: block;
     margin: auto;
-    width: 90%; }
+    width: 100%; }
     #product-detail-tab-product div.pin a {
+      width: 92%; }
+
+#product-detail-tab-comment {
+  margin: 10px 20px; }
+  #product-detail-tab-comment div.pin {
+    text-align: center;
+    display: block;
+    margin: auto;
+    width: 90%; }
+    #product-detail-tab-comment div.pin a {
       width: 92%; }
 
 #mobile-contract-list-content {
@@ -1200,7 +1287,7 @@ md-sidenav {
   max-height: 260px !important;
   height: 260px !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
-  #expense-dashboard .toolbar-expense div {
+  #expense-dashboard .toolbar-expense div.user-main {
     padding: 26px 10px 10px 10px;
     text-align: center;
     height: inherit !important; }
@@ -1214,6 +1301,11 @@ md-sidenav {
   #expense-dashboard .toolbar-expense h3 {
     color: white;
     font-size: 28px !important; }
+  #expense-dashboard .toolbar-expense div.profil-pic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-top: 0; }
   #expense-dashboard .toolbar-expense img.user-img {
     border-radius: 50%;
     width: 100px;
@@ -1627,3 +1719,15 @@ md-sidenav {
         color: gray; }
   #push-notification div.notification-option div.footer {
     margin-top: 24px; }
+
+.ask-question-no-image {
+  text-align: center; }
+
+.ask-question-select {
+  align-content: center; }
+
+#ask-question-detail-text {
+  margin: 20px 20px 0 34px; }
+
+#ask-question-send-button a {
+  width: 100%; }

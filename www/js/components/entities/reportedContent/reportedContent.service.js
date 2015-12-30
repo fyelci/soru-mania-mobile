@@ -1,8 +1,8 @@
 'use strict';
 
 appServices
-    .factory('ReportedContent', function ($resource, DateUtils) {
-        return $resource('api/reportedContents/:id', {}, {
+    .factory('ReportedContent', function ($resource, DateUtils, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/reportedContents/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

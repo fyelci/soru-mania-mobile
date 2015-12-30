@@ -23,7 +23,7 @@
 // }]
 // 
 // Controller of facebook login Page.
-appControllers.controller('facebookLoginCtrl', function ($scope, $state, $cordovaOauth, $http, localStorage) {
+appControllers.controller('facebookLoginCtrl', function ($scope, $state, $cordovaOauth, $http, localStorageService) {
 
     // This function is the first activity in the controller. 
     // It will initial all variable data and let the function works when page load.
@@ -71,9 +71,9 @@ appControllers.controller('facebookLoginCtrl', function ($scope, $state, $cordov
         }
     };// End goToUserProfile.
 
-    //getUserProfile is for get user information form localStorage by calling localStorage.get service.
+    //getUserProfile is for get user information form localStorageService by calling localStorageService.get service.
     $scope.getUserProfile = function () {
-        $scope.userInfo = localStorage.get("Facebook");
+        $scope.userInfo = localStorageService.get("Facebook");
         if ($scope.userInfo != null) {
             $scope.isLogin = true;
         }
@@ -119,8 +119,8 @@ appControllers.controller('facebookLoginCtrl', function ($scope, $state, $cordov
                             id: result.data.id,
                             access_token: $scope.accessToken
                         };
-                        // Store user profile information to localStorage service.
-                        localStorage.set("Facebook", $scope.userInfo);
+                        // Store user profile information to localStorageService service.
+                        localStorageService.set("Facebook", $scope.userInfo);
                         // Navigate to facebook profile page.
                         $scope.navigateTo("app.facebookProfile");
                     });
@@ -138,15 +138,15 @@ appControllers.controller('facebookLoginCtrl', function ($scope, $state, $cordov
 });// End of facebook login controller.
 
 // Controller of facebook profile Page.
-appControllers.controller('facebookProfileCtrl', function ($mdDialog, $scope, $state, $stateParams, $cordovaOauth, $ionicHistory, $http, localStorage, $timeout) {
+appControllers.controller('facebookProfileCtrl', function ($mdDialog, $scope, $state, $stateParams, $cordovaOauth, $ionicHistory, $http, localStorageService, $timeout) {
 
     // This function is the first activity in the controller. 
     // It will initial all variable data and let the function works when page load.
     $scope.initialForm = function () {
 
         // $scope.userInfo is the variable for store user profile information
-        // It get data from localStorage service.
-        $scope.userInfo = localStorage.get("Facebook");
+        // It get data from localStorageService service.
+        $scope.userInfo = localStorageService.get("Facebook");
 
         // $scope.loading is the variable for loading progress.
         $scope.loading = true;
@@ -169,7 +169,7 @@ appControllers.controller('facebookProfileCtrl', function ($mdDialog, $scope, $s
         });
     };// End navigateTo.
 
-    // logOut is for log out it will clear facebook data in localStorage service.
+    // logOut is for log out it will clear facebook data in localStorageService service.
     $scope.logOut = function ($event) {
         //mdDialog.show use for show alert box for Confirm to log out.
         $mdDialog.show({
@@ -186,9 +186,9 @@ appControllers.controller('facebookProfileCtrl', function ($mdDialog, $scope, $s
             }
         }).then(function () {
             // For confirm button to log out.
-            // Clear facebook data in localStorage service.
-            localStorage.set("Facebook", null);
-            $scope.userinfoData = localStorage.get("Facebook");
+            // Clear facebook data in localStorageService service.
+            localStorageService.set("Facebook", null);
+            $scope.userinfoData = localStorageService.get("Facebook");
 
             // Navigate to log in page.
             if ($scope.userinfoData == null) {
@@ -207,7 +207,7 @@ appControllers.controller('facebookProfileCtrl', function ($mdDialog, $scope, $s
 });// End of facebook profile controller.
 
 // Controller of facebook feed Page.
-appControllers.controller('facebookFeedCtrl', function ($scope, $state, $ionicHistory, $stateParams, $cordovaOauth, $http, localStorage) {
+appControllers.controller('facebookFeedCtrl', function ($scope, $state, $ionicHistory, $stateParams, $cordovaOauth, $http, localStorageService) {
    
     // This function is the first activity in the controller. 
     // It will initial all variable data and let the function works when page load.
@@ -220,8 +220,8 @@ appControllers.controller('facebookFeedCtrl', function ($scope, $state, $ionicHi
         };
 
         // $scope.userInfo is the variable for store user profile information
-        // It get data from localStorage service.
-        $scope.userInfo = localStorage.get("Facebook");
+        // It get data from localStorageService service.
+        $scope.userInfo = localStorageService.get("Facebook");
 
         // $scope.loading is the variable for loading progress.
         $scope.isLoading = false;
@@ -282,13 +282,13 @@ appControllers.controller('facebookFeedCtrl', function ($scope, $state, $ionicHi
     $scope.logout = function () {
 
         // Clear facebook data in localStorage service.
-        localStorage.set("Facebook", null);
+        localStorageService.set("Facebook", null);
 
         // Navigate to log in page.
         $ionicHistory.nextViewOptions({
             disableBack: true
         });
-        $scope.userinfoData = localStorage.get("Facebook");
+        $scope.userinfoData = localStorageService.get("Facebook");
         if ($scope.userinfoData == null) {
             $state.go('app.facebookLogin');
         };
@@ -352,7 +352,7 @@ appControllers.controller('facebookFeedCtrl', function ($scope, $state, $ionicHi
 });// End of facebook feed controller.
 
 // Controller of facebook friend list Page.
-appControllers.controller('facebookFriendListCtrl', function ($scope, $state, $ionicHistory, $stateParams, $cordovaOauth, $http, localStorage) {
+appControllers.controller('facebookFriendListCtrl', function ($scope, $state, $ionicHistory, $stateParams, $cordovaOauth, $http, localStorageService) {
     
     // This function is the first activity in the controller. 
     // It will initial all variable data and let the function works when page load.
@@ -366,7 +366,7 @@ appControllers.controller('facebookFriendListCtrl', function ($scope, $state, $i
 
         // $scope.userInfo is the variable for store user profile information
         // It get data from localStorage service.
-        $scope.userInfo = localStorage.get("Facebook");
+        $scope.userInfo = localStorageService.get("Facebook");
 
         // $scope.loading is the variable for loading progress.
         $scope.isLoading = false;
@@ -428,12 +428,12 @@ appControllers.controller('facebookFriendListCtrl', function ($scope, $state, $i
      // logout for log out.
     $scope.logout = function () {
          // Clear facebook data in localStorage service.
-        localStorage.set("Facebook", null);
+        localStorageService.set("Facebook", null);
         // Navigate to log in page.
         $ionicHistory.nextViewOptions({
             disableBack: true
         });
-        $scope.userinfoData = localStorage.get("Facebook");
+        $scope.userinfoData = localStorageService.get("Facebook");
         if ($scope.userinfoData == null) {
             $state.go('app.facebookLogin');
         }

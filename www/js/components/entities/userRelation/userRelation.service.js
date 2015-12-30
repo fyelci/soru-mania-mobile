@@ -1,8 +1,8 @@
 'use strict';
 
 appServices
-    .factory('UserRelation', function ($resource, DateUtils) {
-        return $resource('api/userRelations/:id', {}, {
+    .factory('UserRelation', function ($resource, DateUtils, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/userRelations/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

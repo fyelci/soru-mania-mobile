@@ -1,0 +1,71 @@
+<ion-view view-title="Sorunu Sor">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--product detail section-->
+    <ion-content id="ask-question">
+        <md-content class="md-padding">
+            <div class="row">
+                <div class="col-25">
+                </div>
+                <div class="col-50 ask-question-select">
+                    <md-select ng-model="selectedCategory.id" aria-label="md-option" placeholder="Sınav Seçin" ng-change="categorySelected(selectedCategory)">
+                        <md-option ng-repeat="category in categories" ng-value="category">{{category.name}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="row" ng-show="selectedCategory.id">
+                <div class="col-25">
+                </div>
+                <div class="col-50 ask-question-select">
+                    <md-select ng-model="selectedLesson.id" aria-label="md-option" placeholder="Sınav Seçin">
+                        <md-option ng-repeat="lesson in lessons" ng-value="lesson">{{lesson.name}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+
+            <div class="row" ng-show="selectedLesson.id && !imgURI">
+                <br/>
+                <div class="col-25">
+                </div>
+                <div class="col-50 ask-question-no-image">
+                    <a ng-click="takePicture()">
+                        <i class="fa fa-camera fa-5x"></i>
+                    </a>
+                    <br/>
+                    Fotoğraf Çek
+                </div>
+            </div>
+
+            <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+
+            <div class="row ask-question-detail-text" ng-show="selectedLesson.id">
+                <md-input-container md-no-float="" class="md-list-item-full-width" md-no-float>
+                    <textarea ng-model="question.detail" placeholder=" Soruyla ilgili açıklama..."></textarea>
+                </md-input-container>
+            </div>
+
+            <div class="row" id="ask-question-send-button" ng-show="selectedLesson.id">
+                <div class="col-25">
+                </div>
+                <div class="col-50">
+                    <a class="md-raised md-warn md-button md-default-theme"
+                       ng-click="askQuestion()">
+                        Soruyu Gönder
+                    </a>
+                </div>
+            </div>
+
+
+
+        </md-content>
+    </ion-content>
+    <!--end product detail section-->
+
+
+
+</ion-view>

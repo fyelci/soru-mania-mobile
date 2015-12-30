@@ -1,8 +1,8 @@
 'use strict';
 
 appServices
-    .factory('UserContentPreference', function ($resource, DateUtils) {
-        return $resource('api/userContentPreferences/:id', {}, {
+    .factory('UserContentPreference', function ($resource, DateUtils, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/userContentPreferences/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

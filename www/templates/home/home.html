@@ -3,123 +3,28 @@
 <!--State name : app.locationFeed-->
 <!--URL : #app/locationFeed-->
 
-<ion-view title="Location">
+<ion-view title="Soru Mania">
     <!--location feed section-->
-    <ion-content id="location-feed-content">
-        <!--
-        <ion-tabs class="tabs-icon-top tabs-color-active-positive">
-            <ion-tab title="YGS"></ion-tab>
-            <ion-tab title="KPSS"></ion-tab>
-            <ion-tab icon="ion-home"></ion-tab>
-            <ion-tab title="ALES"></ion-tab>
-            <ion-tab title="OKS"></ion-tab>
-        </ion-tabs>
+    <ion-content id="location-feed-content" scroll="true">
+        <ion-refresher
+                pulling-text="Yenilemek için aşağı çekin..."
+                on-refresh="doRefresh()">
+        </ion-refresher>
 
-        <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
-            <div class="tabs">
-                <a class="tab-item">YGS</a>
-                <a class="tab-item">KPSS</a>
-                <a class="tab-item"><i class="icon ion-home"></i></a>
-                <a class="tab-item">ALES</a>
-                <a class="tab-item">OKS</a>
-            </div>
-        </div>
-        -->
         <!--list section-->
         <div class="location-list">
+
             <!--location item section-->
-            <div class="location-item">
-                <div class="location-img" style="background-image:url('img/location_feed_01.png')">
+            <div class="location-item" ng-repeat="question in questions">
+                <div class="location-img"
+                     ng-click="goToQuestion(question.id)"
+                     style="background-image:url('{{question.mediaUrl}}')">
 
                 </div>
                 <div class="location-content row">
                     <div class="col-90">
                         <h1>
-                            Stone Garden
-                        </h1>
-
-                        <p>
-                            <i class="fa fa-flag"></i> Bangkok Thailand
-                        </p>
-                    </div>
-                    <div class="col-10">
-                        <span class="text-add">+Wishlist</span>
-                    </div>
-                </div>
-            </div><!--end location item section-->
-
-            <!--location item section-->
-            <div class="location-item">
-                <div class="location-img" style="background-image:url('img/location_feed_02.png')">
-
-                </div>
-                <div class="location-content row">
-                    <div class="col-90">
-                        <h1>
-                            Little Clock tower
-                        </h1>
-
-                        <p>
-                            <i class="fa fa-flag"></i> Bangkok Thailand
-                        </p>
-                    </div>
-                    <div class="col-10">
-                        <span class="text-add">+Wishlist</span>
-                    </div>
-                </div>
-            </div><!--end location item section-->
-
-            <!--location item section-->
-            <div class="location-item">
-                <div class="location-img" style="background-image:url('img/location_feed_03.png')">
-
-                </div>
-                <div class="location-content row">
-                    <div class="col-90">
-                        <h1>
-                            Play ground
-                        </h1>
-
-                        <p>
-                            <i class="fa fa-flag"></i> Bangkok Thailand
-                        </p>
-                    </div>
-                    <div class="col-10">
-                        <span class="text-add">+Wishlist</span>
-                    </div>
-                </div>
-            </div><!--end location item section-->
-
-            <!--location item section-->
-            <div class="location-item">
-                <div class="location-img" style="background-image:url('img/location_feed_04.png')">
-
-                </div>
-                <div class="location-content row">
-                    <div class="col-90">
-                        <h1>
-                            Green park
-                        </h1>
-
-                        <p>
-                            <i class="fa fa-flag"></i> Bangkok Thailand
-                        </p>
-                    </div>
-                    <div class="col-10">
-                        <span class="text-add">+Wishlist</span>
-                    </div>
-                </div>
-            </div><!--end location item section-->
-
-            <!--location item section-->
-            <div class="location-item">
-                <div class="location-img" style="background-image:url('img/location_feed_05.png')">
-
-                </div>
-                <div class="location-content row">
-                    <div class="col-90">
-                        <h1>
-                            Woman Garden
+                            {{question.user.fullName}}
                         </h1>
 
                         <p>
@@ -133,12 +38,19 @@
             </div><!--end location item section-->
 
         </div><!--end list section-->
+
+        <ion-infinite-scroll
+                ng-if="hasMoreData"
+                icon="ion-loading-c"
+                on-infinite="infiniteLoad()">
+        </ion-infinite-scroll>
+
     </ion-content><!--end location feed section-->
     <ion-footer-bar>
         <div class="tabs">
             <a class="tab-item">YGS</a>
             <a class="tab-item">KPSS</a>
-            <a class="tab-item active"><i class="icon ion-android-camera"></i></a>
+            <a ui-sref="app.ask-question" class="tab-item active"><i class="icon ion-android-camera"></i></a>
             <a class="tab-item">ALES</a>
             <a class="tab-item">OKS</a>
         </div>

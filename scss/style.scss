@@ -1074,6 +1074,137 @@ md-sidenav {
 }//end social sign up section
 //end Social connect section
 
+
+#comment-detail-tabs {
+  height: 760px;
+  min-height: 760px;
+  border: none;
+}
+
+//product tab detail section
+#comment-detail-tab-detail {
+  div.detail-form {
+    margin: 10px 20px;
+
+    //product tab detail header section
+    div.product-detail-header {
+      margin-top: 20px;
+
+      h1 {
+        font-size: 30px;
+      }
+
+      p {
+        font-size: 16px;
+        color: $color_gray;
+        line-height: normal;
+      }
+    }//end product tab detail header section
+
+    //product tab detail price section
+    div.product-detail-price {
+      margin-left: 2px;
+      height: 80px;
+
+      div {
+        &.left {
+          font-size: 26px;
+          float: left;
+          margin-top: 12px;
+          line-height: 28px;
+        }
+
+        &.right {
+          font-size: 26px;
+          float: right;
+
+          a {
+            width: 116px;
+            margin-top: 22px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }//end product tab detail price section
+
+    //product tab detail shipping section
+    div.product-detail-shipping {
+      border-top: $color_alto;
+      border-top-style: solid;
+      border-top-width: 1px;
+      margin-top: 16px;
+      height: 128px;
+
+      div {
+        &.col-67 {
+          font-size: 26px;
+          margin-top: 12px;
+          line-height: 28px;
+          width: 160px;
+
+          p {
+            font-size: 16px;
+            color: $color_gray;
+            margin: 0;
+          }
+        }
+
+        &.col-33 {
+          font-size: 22px;
+          text-align: center;
+          margin-top: 18px;
+          width: 120px;
+
+          p {
+            margin-top: 15px;
+            font-weight: 500;
+          }
+        }
+      }
+    }//end product tab detail shipping section
+
+    //product tab detail review section
+    div.product-detail-review {
+      border-top: $color_alto;
+      border-top-style: solid;
+      border-top-width: 1px;
+      margin-top: 10px;
+      padding-top: 20px;
+
+      p {
+        font-size: 16px;
+
+        span {
+          color: $color_chenin_approx;
+          margin-left: 10px;
+        }
+      }
+    }//end product tab detail review section
+
+    //product tab detail note section
+    div.product-detail-note {
+      border-top: $color_alto;
+      border-top-style: solid;
+      border-top-width: 1px;
+      margin-top: 10px;
+      padding-top: 20px;
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 16px;
+        color: $color_gray;
+        margin: 0;
+      }
+    }//end product tab detail note section
+
+    //end detail section
+  }
+}//end product tab detail section
+
+
 //product detail section
 //product tabs section
 #product-detail-tabs {
@@ -1212,7 +1343,7 @@ md-sidenav {
     text-align: center;
     display: block;
     margin: auto;
-    width: 90%;
+    width: 100%;
 
     a {
       width: 92%;
@@ -1220,6 +1351,26 @@ md-sidenav {
   }//end pin section
 }//end product tab product section
 //end product detail section
+
+//product tab comment section
+#product-detail-tab-comment {
+  margin: 10px 20px;
+  //pin section
+  div.pin {
+    text-align: center;
+    display: block;
+    margin: auto;
+    width: 90%;
+
+    a {
+      width: 92%;
+    }
+  }//end pin section
+}//end product tab product section
+//end product comment section
+
+
+
 
 //mobile contract list section
 #mobile-contract-list-content {
@@ -1925,7 +2076,7 @@ md-sidenav {
     height: 260px !important;
     box-shadow: 0 2px 6px $color_black_20;
 
-    div {
+    div.user-main {
       padding: 26px 10px 10px 10px;
       text-align: center;
       height: inherit !important;
@@ -1945,6 +2096,12 @@ md-sidenav {
     h3 {
       color: $color_white;
       font-size: 28px !important;
+    }
+    div.profil-pic {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-top: 0;
     }
     img.user-img {
       border-radius: 50%;
@@ -2571,3 +2728,25 @@ md-sidenav {
     }//end footer section
   }//end notification option section
 }//end push notification section
+
+
+//Ask Question
+.ask-question-no-image {
+  text-align: center;
+}
+
+.ask-question-select {
+  align-content: center;
+}
+
+#ask-question-detail-text {
+  margin: 20px 20px 0 34px;
+}
+
+#ask-question-send-button {
+  a {
+    width: 100%;
+  }
+}
+
+

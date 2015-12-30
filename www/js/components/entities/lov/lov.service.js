@@ -1,8 +1,8 @@
 'use strict';
 
 appServices
-    .factory('Lov', function ($resource, DateUtils) {
-        return $resource('api/lovs/:id', {}, {
+    .factory('Lov', function ($resource, DateUtils, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/lovs/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
@@ -14,8 +14,8 @@ appServices
             'update': { method:'PUT' }
         });
     })
-    .factory('LovType', function ($resource, DateUtils) {
-        return $resource('api/lovs/type/:type', {}, {
+    .factory('LovType', function ($resource, DateUtils, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/lovs/type/:type', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

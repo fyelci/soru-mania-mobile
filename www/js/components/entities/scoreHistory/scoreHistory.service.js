@@ -1,8 +1,8 @@
 'use strict';
 
 appServices
-    .factory('ScoreHistory', function ($resource, DateUtils) {
-        return $resource('api/scoreHistorys/:id', {}, {
+    .factory('ScoreHistory', function ($resource, DateUtils, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/scoreHistorys/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',
