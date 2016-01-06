@@ -1,10 +1,26 @@
 'use strict';
 
 appControllers
-    .controller('QuestionController', function ($scope, $state, $mdToast, $mdBottomSheet, $timeout, $stateParams, Question) {
+    .controller('QuestionController', function ($scope, $state, $stateParams, $mdToast, $mdBottomSheet, $timeout, Question) {
         //Google Analytics
         if(typeof analytics !== 'undefined') {
             analytics.trackView('Soru Detay Sayfası');
+        }
+
+        if($stateParams.message) {
+            // Showing toast for error.
+            $mdToast.show({
+                controller: 'toastController',
+                templateUrl: 'toast.html',
+                hideDelay: 2000,
+                position: 'top',
+                locals: {
+                    displayOption: {
+                        title: $stateParams.message
+                    }
+                }
+            });//End showing toast.
+
         }
 
         $scope.initialForm = function () {
@@ -37,6 +53,8 @@ appControllers
 
 
         $scope.answerQuestion = function () {
+            console.log('Answer Question ID:' + $scope.question.id);
+            console.log($scope.question);
             $state.go('app.comment', {question: $scope.question, questionId: $scope.question.id});
         };
 

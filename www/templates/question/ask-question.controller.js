@@ -1,7 +1,7 @@
 'use strict';
 
 appControllers
-    .controller('AskQuestionController', function ($scope, $rootScope, $state, $stateParams, $mdToast, $cordovaCamera, LovType, Question, Principal, ImageUploadService) {
+    .controller('AskQuestionController', function ($scope, $state, $mdToast, $cordovaCamera, $mdBottomSheet, $cordovaImagePicker, LovType, Question, Principal, ImageUploadService) {
         //Google Analytics
         if(typeof analytics !== 'undefined') {
             analytics.trackView('Soru Sorma');
@@ -11,12 +11,16 @@ appControllers
             $scope.account = account;
         });
 
-        $scope.question = {};
-        $scope.selectedLesson = {};
-        $scope.selectedCategory = {};
+        $scope.resetParams = function () {
+            $scope.question = {};
+            $scope.selectedLesson = {};
+            $scope.selectedCategory = {};
+            $scope.imgURI = undefined;
+        }
 
         $scope.initPage = function () {
             $scope.categories = LovType.get({type:'CATEGORY'});
+            $scope.resetParams();
         };
 
         $scope.categorySelected = function (selectedCategory) {
@@ -32,9 +36,9 @@ appControllers
             } else if(!$scope.selectedLesson.id) {
                 hasError = true;
                 errorMessage = 'Ders Seçiniz!';
-            } else if(!$scope.question.detail && !$scope.imgURI) {
+            } else if(!$scope.imgURI) {
                 hasError = true;
-                errorMessage = 'Sorunun resmini çekin, ya da açıklama girin!';
+                errorMessage = 'Sorunun resmini çekiniz!';
             }
 
             if(hasError) {
@@ -94,7 +98,7 @@ appControllers
 
         var onSaveSuccess = function (result) {
             $scope.isSaving = false;
-            $scope.question = {};
+            $scope.resetParams();
             $state.go('app.home' , {message: 'Sorunuz Başarılı Bir Şekilde Kaydedildi!'});
         };
 
@@ -102,10 +106,9 @@ appControllers
             $scope.isSaving = false;
         };
 
-        $scope.initPage();
-
-
         $scope.takePicture = function() {
+            $mdBottomSheet.hide();
+
             var options = {
                 quality : 75,
                 destinationType : Camera.DestinationType.FILE_URI,
@@ -127,4 +130,41 @@ appControllers
                 // An error occured. Show a message to the user
             });
         }
+
+        // selectImage is for select image from mobile gallery
+        $scope.selectImage = function () {
+            //hide BottomSheet.
+            $mdBottomSheet.hide();
+            var options = {
+                maximumImagesCount: 1,
+                width: 350,
+                //height: 300,
+                quality: 75
+            };
+
+            // select image by calling $cordovaImagePicker.getPictures(options)
+            $cordovaImagePicker.getPictures(options)
+
+                .then(function (results) {
+                    // store image data to imageList.
+                    $scope.imgURI = undefined;
+                    for (var i = 0; i < results.length; i++) {
+                        $scope.imgURI = results[i]
+                    }
+                }, function (error) {
+                    console.log(error);
+                });
+        };// End selectImage.
+
+        // showListBottomSheet for show BottomSheet.
+        $scope.showListBottomSheet = function ($event) {
+            $mdBottomSheet.show({
+                templateUrl: 'image-picker-actions-template',
+                targetEvent: $event,
+                scope: $scope.$new(false),
+            });
+        }; // End showListBottomSheet.
+
+
+        $scope.initPage();
     });

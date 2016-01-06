@@ -359,6 +359,9 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             })
             .state('app.question', {
                 url: "/question/{id}",
+                params: {
+                    message: null,
+                },
                 views: {
                     'menuContent': {
                         templateUrl: "templates/question/question.html",

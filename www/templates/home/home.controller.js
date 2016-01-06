@@ -1,11 +1,17 @@
 'use strict';
 
 appControllers
-    .controller('HomeController', function ($scope, $state, $stateParams, $mdToast, Question, ApiInfo) {
+    .controller('HomeController', function ($scope, $state, $stateParams, $mdToast, $ionicPopover, Question, ApiInfo) {
         //Google Analytics
         if(typeof analytics !== 'undefined') {
             analytics.trackView('Ana Sayfa');
         }
+
+        $ionicPopover.fromTemplateUrl('templates/popover.html', {
+            scope: $scope,
+        }).then(function(popover) {
+            $scope.popover = popover;
+        });
 
         if($stateParams.message) {
             // Showing toast for error.
@@ -26,6 +32,9 @@ appControllers
         $scope.page = 1;
         $scope.hasMoreData = true;
         var serviceLocked = false;
+        $scope.selectedCategory = undefined;
+        $scope.selectedLesson = undefined;
+        $scope.selectedListType = undefined;
 
         $scope.$on('$ionicView.enter', function() {
         });
@@ -33,7 +42,15 @@ appControllers
         //Sorulari yukleme fonksiyonu
         $scope.loadAll = function(refreshing) {
             serviceLocked = true;
-            Question.query({page: $scope.page - 1, size: ApiInfo.pageSize, sort: ['createDate' + ',' + 'desc', 'id']}, function(result, headers) {
+            var listParam =
+                {   page: $scope.page - 1,
+                    size: ApiInfo.pageSize,
+                    sort: ['createDate' + ',' + 'desc', 'id'],
+                    categoryId : $scope.selectedCategory,
+                    lessonId : $scope.selectedLesson,
+                    listType : $scope.selectedListType
+                };
+            Question.query(listParam, function(result, headers) {
                 if(result.length < ApiInfo.pageSize) {
                     $scope.hasMoreData = false;
                 }
@@ -78,6 +95,19 @@ appControllers
         };
 
         $scope.clear = function () {
+        };
+
+        $scope.selectCategory = function (event, categoryId) {
+            $scope.selectedCategory = categoryId;
+
+            $scope.questions = [];
+            $scope.page = 1;
+            $scope.hasMoreData = true;
+            serviceLocked = false;
+
+            $(event.target).addClass('active');
+
+            $scope.loadAll();
         };
 
     });

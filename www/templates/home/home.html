@@ -4,6 +4,54 @@
 <!--URL : #app/locationFeed-->
 
 <ion-view title="Soru Mania">
+
+    <!--right button on navigation bar-->
+    <ion-nav-buttons side="right">
+
+        <a ng-click="popover.show($event)" class="button  button-icon ion-android-more-vertical">
+        </a>
+
+        <!--
+        <a ng-click="popover.show($event)" class="button  button-icon ion-android-more-vertical">
+        </a>
+
+        <md-button class="md-icon-button ion-more" ng-click="popover.show($event)"
+                   aria-label="Daha Fazla">
+            <i class="ion-android-more-vertical"></i>
+        </md-button>
+
+
+        <md-menu md-position-mode="target-right target" class="md-list-item-md-menu-right">
+            <md-button class="md-icon-button ion-android-more-vertical" ng-click="$mdOpenMenu()"
+                       aria-label="Daha Fazla">
+            </md-button>
+            <md-menu-content width="2">
+                <md-menu-item>
+                    <a class="md-button md-default-theme" ng-click="doSomeThing()">
+                        <span class="menu-item-button">Cevapsız Sorular</span>
+                    </a>
+                </md-menu-item>
+                <md-menu-item>
+                    <a class="md-button md-default-theme" ng-click="doSomeThing()">
+                        <span class="menu-item-button">Popüler</span>
+                    </a>
+                </md-menu-item>
+                <md-menu-item>
+                    <a class="md-button md-default-theme" ng-click="doSomeThing()">
+                        <span class="menu-item-button">En Yeniler</span>
+                    </a>
+                </md-menu-item>
+                <md-menu-item>
+                    <a class="md-button md-default-theme" ng-click="doSomeThing()">
+                        <span class="menu-item-button">Action 4</span>
+                    </a>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+        -->
+    </ion-nav-buttons> <!--end right button on navigation bar-->
+
+
     <!--location feed section-->
     <ion-content id="location-feed-content" scroll="true">
         <ion-refresher
@@ -22,17 +70,18 @@
 
                 </div>
                 <div class="location-content row">
-                    <div class="col-90">
+                    <div class="col-50">
                         <h1>
                             {{question.user.fullName}}
                         </h1>
 
                         <p>
-                            <i class="fa fa-flag"></i> Bangkok Thailand
+                            <i class="fa fa-clock-o"></i> {{question.readableCreateDate}}
                         </p>
                     </div>
-                    <div class="col-10">
-                        <span class="text-add">+Wishlist</span>
+                    <div class="col-50">
+                        <span class="text-add">{{question.lessonName}}</span>
+                        <span class="text-add">{{question.categoryName}}</span>
                     </div>
                 </div>
             </div><!--end location item section-->
@@ -47,12 +96,40 @@
 
     </ion-content><!--end location feed section-->
     <ion-footer-bar>
-        <div class="tabs">
-            <a class="tab-item">YGS</a>
-            <a class="tab-item">KPSS</a>
-            <a ui-sref="app.ask-question" class="tab-item active"><i class="icon ion-android-camera"></i></a>
-            <a class="tab-item">ALES</a>
-            <a class="tab-item">OKS</a>
+        <div class="tabs-background-positive tabs-color-light">
+            <div class="tabs">
+                <a ng-click="selectCategory($event, 3)" class="tab-item">YGS</a>
+                <a ng-click="selectCategory($event, 1)" class="tab-item">KPSS</a>
+                <a ui-sref="app.ask-question" class="tab-item active"><i class="icon ion-android-camera"></i></a>
+                <a ng-click="selectCategory($event, 5)" class="tab-item">TEOG</a>
+                <a ng-click="selectCategory($event, 2)" class="tab-item">LYS</a>
+            </div>
         </div>
     </ion-footer-bar>
+
+
+    <script id="templates/popover.html" type="text/ng-template">
+        <ion-popover-view>
+            <ion-content>
+                <md-list>
+                    <md-list-item class="md-list-item-default" ng-click="doSomeThing()">
+                        <i class="ion-android-pin"></i>
+
+                        <p>Cevapsız Sorular</p>
+                    </md-list-item>
+                    <md-list-item class="md-list-item-default" ng-click="doSomeThing()">
+                        <i class="ion-android-pin"></i>
+
+                        <p>Popüler</p>
+                    </md-list-item>
+                    <md-list-item class="md-list-item-default" ng-click="doSomeThing()">
+                        <i class="ion-android-pin"></i>
+
+                        <p>En Yeniler</p>
+                    </md-list-item>
+                </md-list>
+            </ion-content>
+        </ion-popover-view>
+    </script>
+
 </ion-view>

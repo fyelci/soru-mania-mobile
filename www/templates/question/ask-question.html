@@ -33,11 +33,12 @@
                 <div class="col-25">
                 </div>
                 <div class="col-50 ask-question-no-image">
-                    <a ng-click="takePicture()">
+                    <a ng-click="showListBottomSheet($event)"
+                       aria-label="showListBottomSheet">
                         <i class="fa fa-camera fa-5x"></i>
                     </a>
                     <br/>
-                    Fotoğraf Çek
+                    Resim Yükle
                 </div>
             </div>
 
@@ -60,12 +61,36 @@
                 </div>
             </div>
 
-
-
         </md-content>
     </ion-content>
     <!--end product detail section-->
 
+
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="image-picker-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Resim Yükleme Şeklini Seçiniz</h1>
+            <!--list section-->
+            <md-list>
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="takePicture()">
+                        <i class="ion-camera"></i>
+                        <span>Resim Çek</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="selectImage()">
+                        <i class="ion-image"></i>
+                        <span>Galeriden Seç</span>
+                    </a>
+                </md-list-item>
+            </md-list><!--end list section-->
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
 
 
 </ion-view>

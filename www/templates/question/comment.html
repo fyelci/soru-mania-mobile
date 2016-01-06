@@ -21,49 +21,41 @@
                 <!--product tab detail section-->
                 <md-tab label="Cevap">
                     <md-content id="comment-detail-tab-detail">
-                        <div>Test</div>
-                        <!--
 
-                        <div class="toolbar-image-cover product" style="background-image: url('{{question.mediaUrl}}');">
+                        <div class="row ask-question-detail-text">
+                            <md-input-container md-no-float="" class="md-list-item-full-width" md-no-float>
+                                <textarea ng-model="comment.text" placeholder=" Cevapla ilgili açıklama..."></textarea>
+                            </md-input-container>
                         </div>
-                        <a class="md-button md-accent md-fab fab-toolbar-medium"
-                           ng-click="sharedProduct($event,product)"
-                           aria-label="showListBottomSheet">
-                            <i class="ion-android-share-alt"></i>
-                        </a>
 
-                        <div class="detail-form">
-                            <div class="header">
-                                <h1>Başlık</h1>
-
-                                <p>{{question.detail}}</p>
+                        <div class="row" ng-show="!imgURI">
+                            <br/>
+                            <div class="col-25">
                             </div>
-                            <div class="product-detail-price">
-                                <div class="left">
-                                    <span class="">Sınav: {{question.categoryName}}</span>
-                                    <br/>
-                                    <span class="">Ders: {{question.lessonName}}</span>
-                                </div>
-                                <div class="right">
-                                    <a class="md-raised md-warn md-button md-default-theme" ng-click="addToCart()">
-                                        ADD TO CART
-                                    </a>
-                                </div>
+                            <div class="col-50 ask-question-no-image">
+                                <a ng-click="showListBottomSheet($event)"
+                                   aria-label="showListBottomSheet">
+                                    <i class="fa fa-camera fa-5x"></i>
+                                </a>
+                                <br/>
+                                Resim Yükle
                             </div>
-                            <div class="product-detail-review">
-                                <p>Zorluk :
-                                    <span>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </span>
-                                </p>
-                            </div>
-
                         </div>
-                        -->
+
+                        <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+
+
+                        <div class="row" id="ask-question-send-button">
+                            <div class="col-25">
+                            </div>
+                            <div class="col-50">
+                                <a class="md-raised md-warn md-button md-default-theme"
+                                   ng-click="saveAnswer()">
+                                    Cevabı Gönder
+                                </a>
+                            </div>
+                        </div>
+
                     </md-content>
                 </md-tab>
 
@@ -98,4 +90,32 @@
         </md-content>
     </ion-content>
     <!--end product detail section-->
+
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="image-picker-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Resim Yükleme Şeklini Seçiniz</h1>
+            <!--list section-->
+            <md-list>
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="takePicture()">
+                        <i class="ion-camera"></i>
+                        <span>Resim Çek</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="selectImage()">
+                        <i class="ion-image"></i>
+                        <span>Galeriden Seç</span>
+                    </a>
+                </md-list-item>
+            </md-list><!--end list section-->
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+
 </ion-view>
