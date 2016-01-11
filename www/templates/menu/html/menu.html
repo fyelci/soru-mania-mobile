@@ -42,6 +42,46 @@
                         <span>Ana Sayfa</span>
                     </div>
                 </div>
+                <div class="row menu-item" ng-click="navigateTo('app.leaderboard')">
+                    <div class="col-33">
+                        <i class="fa fa-trophy"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Liderlik Tablosu</span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.settings')">
+                    <div class="col-33">
+                        <i class="fa fa-cog"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Ayarlar</span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.stuffs')">
+                    <div class="col-33">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Kadromuz</span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.share')">
+                    <div class="col-33">
+                        <i class="fa fa-share-alt"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Paylaş</span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.help')">
+                    <div class="col-33">
+                        <i class="fa fa-life-ring"></i>
+                    </div>
+                    <div class="col-66">
+                        <span>Yardım</span>
+                    </div>
+                </div>
                 <md-subheader class="md-warn">Themes</md-subheader>
                 <div class="row menu-item"  ng-click="navigateTo('app.tryAppNoBackBtn')">
                     <div class="col-33">
@@ -195,12 +235,44 @@
             </div>
 
 
+
+            <div class="row menu-item" ng-click="navigateTo('app.help')">
+                <div class="col-33">
+                    <i class="fa "></i>
+                </div>
+                <div class="col-66">
+                    <span></span>
+                </div>
+            </div>
+
+
+
             <!--If device is not Android application will present below code.-->
             <!--It will show animation when selecting row.-->
             <md-list ng-if="!isAndroid">
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app.home')">
                     <i class="fa fa-home"></i>
                     <span>Ana Sayfa</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.leaderboard')">
+                    <i class="fa fa-trophy"></i>
+                    <span>Liderlik Tablosu</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.settings')">
+                    <i class="fa fa-cog"></i>
+                    <span>Ayarlar</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.stuffs')">
+                    <i class="fa fa-users"></i>
+                    <span>Kadromuz</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.share')">
+                    <i class="fa fa-share-alt"></i>
+                    <span>Paylaş</span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.help')">
+                    <i class="fa fa-life-ring"></i>
+                    <span>Yardım</span>
                 </md-list-item>
                 <md-subheader class="md-warn">Themes</md-subheader>
                 <md-list-item class="menu-list-item" ng-click="navigateTo('app.tryAppNoBackBtn')">

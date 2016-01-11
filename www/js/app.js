@@ -30,7 +30,7 @@ window.globalVariable = {
 };// End Global variable
 
 
-angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'LocalStorageModule', 'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource'])
+angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'LocalStorageModule', 'ngMaterial', 'ngMessages', 'ngCordova', 'ngResource', 'ionic.rating'])
     .run(function ($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet, $window, Auth, Principal) {
 
         // Create custom defaultStyle.

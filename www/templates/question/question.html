@@ -17,14 +17,9 @@
     <ion-content id="product-detail-content" class="fade-in">
         <md-content class="md-padding">
             <div id="product-detail-tab-product">
-                <div>
-                    <h1>Başlık</h1>
-
-                    <p>Detay</p>
-                </div>
                 <!--pin section-->
                 <div class="pin">
-                    <img ng-src="{{question.mediaUrl}}"/>
+                    <img ng-src="{{question.mediaUrl}}" ng-click="showQuestionImage()"/>
 
                     <p>
                         {{question.detail}}
@@ -34,6 +29,9 @@
                         <span class="">Sınav: {{question.categoryName}}</span>
                         <br/>
                         <span class="">Ders: {{question.lessonName}}</span>
+                        <br/>
+                        <span>Zorluk ({{question.rateAvg}}/5): </span> <rating ng-model="rating.rate" max="rating.max"></rating>
+                        {{question.rateCount}} oylama
                     </div>
                     <a class="md-raised md-warn md-button md-default-theme"
                        ng-click="answerQuestion()">
@@ -58,7 +56,7 @@
                 </div>
                 <!--pin section-->
                 <div class="pin">
-                    <img ng-src="{{comment.mediaUrl}}"/>
+                    <img ng-src="{{comment.mediaUrl}}" ng-click="showCommentImages($index)"/>
 
                     <p>
                         {{comment.text}}
