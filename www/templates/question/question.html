@@ -37,6 +37,7 @@
                        ng-click="answerQuestion()">
                         Soruyu Cevapla
                     </a>
+                    <a href="" ng-click="openReportDialog($event)" class=""><i class="fa fa-flag"></i></a>
                 </div>  <!--end pin section-->
 
             </div>
@@ -61,6 +62,7 @@
                     <p>
                         {{comment.text}}
                     </p>
+                    <a href="" ng-click="openReportDialog($event, comment.id)" class=""><i class="fa fa-flag"></i></a>
 
                     <!--
                     <a class="md-raised md-warn md-button md-default-theme"
@@ -125,4 +127,31 @@
         </md-bottom-sheet>
     </script>
     <!--end angular template section-->
+
+    <!-- Rreport Sec-->
+    <script type="text/ng-template" id="ui-list-report-sheet-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Şikayet Et</h1>
+            <!--list section-->
+            <md-list>
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="reportContent(500)">
+                        <i class="fa fa-exclamation"></i>
+                        <span>Uygunsuz içerik</span>
+                    </a>
+                </md-list-item>
+                <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="reportContent(501)">
+                        <i class="fa fa-hand-paper-o"></i>
+                        <span>Spam içerik</span>
+                    </a>
+                </md-list-item>
+            </md-list>
+
+            <!--end list section-->
+        </md-bottom-sheet>
+    </script>
+
 </ion-view>

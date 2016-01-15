@@ -1,7 +1,7 @@
 'use strict';
 
 appControllers
-    .controller('QuestionController', function ($scope, $state, $stateParams, $mdToast, $mdBottomSheet, $timeout, $ionicModal, Question, QuestionRating, Principal) {
+    .controller('QuestionController', function ($scope, $state, $stateParams, $mdToast, $mdBottomSheet, $timeout, $ionicModal, Question, QuestionRating, Principal, ReportedContent) {
         //Google Analytics
         if(typeof analytics !== 'undefined') {
             analytics.trackView('Soru Detay Sayfası');
@@ -129,6 +129,52 @@ appControllers
             $scope.modal.hide();
             $scope.modal.remove()
         };
+
+        // Report Start
+        $scope.openReportDialog = function ($event, commentId) {
+            $scope.reportedCommentId = commentId;
+            $mdBottomSheet.show({
+                templateUrl: 'ui-list-report-sheet-template',
+                targetEvent: $event,
+                scope: $scope.$new(false),
+            });
+        };
+
+        $scope.reportContent = function (reportType) {
+            var commentObj = undefined;
+            if($scope.reportedCommentId) {
+                commentObj = {id : $scope.reportedCommentId};
+            }
+
+            var reportedContent = {
+                type : {id : reportType},
+                question : {id : $scope.question.id},
+                comment : commentObj,
+                reporterUser : {id : $scope.account.id}
+            }
+
+            //TODO Save report
+            ReportedContent.save(reportedContent, onReportSuccess);
+
+            $scope.reportedCommentId = undefined;
+            $mdBottomSheet.hide();
+        }
+
+
+        var onReportSuccess = function(result) {
+            $mdToast.show({
+                controller: 'toastController',
+                templateUrl: 'toast.html',
+                hideDelay: 1000,
+                position: 'top',
+                locals: {
+                    displayOption: {
+                        title: 'Zararlı içeriği bildirdiğiniz için teşekkürler!'
+                    }
+                }
+            });
+        }
+        //Report End
 
         $scope.initialForm();
 
