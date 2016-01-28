@@ -36,7 +36,7 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
     $scope.navigateTo = function (stateName, username) {
         $timeout(function () {
             $mdSidenav('left').close();
-            if ($ionicHistory.currentStateName() != stateName) {
+            if ($ionicHistory.currentStateName() != stateName || stateName == 'app.profile') {
                 $ionicHistory.nextViewOptions({
                     disableAnimate: true,
                     disableBack: true
@@ -44,6 +44,7 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
                 if(!username) {
                     $state.go(stateName);
                 } else {
+                    console.log('Im in go to current profile');
                     $state.go(stateName, {username: username});
                 }
             }

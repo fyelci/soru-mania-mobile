@@ -29,7 +29,6 @@ appControllers
                     }
                 }
             });//End showing toast.
-
         }
 
         $scope.initialForm = function () {
@@ -48,6 +47,7 @@ appControllers
                 jQuery('#product-detail-loading-progress').hide();
                 jQuery('#product-detail-content').fadeIn();
             });
+
         };
 
         // sharedProduct fro show shared social bottom sheet by calling sharedSocialBottomSheetCtrl controller.
@@ -175,6 +175,10 @@ appControllers
             });
         }
         //Report End
+
+        $scope.goToUserProfile = function (username) {
+            $state.go('app.profile' , {username: username});
+        };
 
         $scope.initialForm();
 

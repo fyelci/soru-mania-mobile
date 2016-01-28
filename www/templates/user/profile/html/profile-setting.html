@@ -5,7 +5,7 @@
 <!--State name : app.expenseSetting-->
 <!--URL : #app/expenseSetting-->
 
-<ion-view title="Expense Setting">
+<ion-view title="Kullanıcı Ayarları">
     <!--left button on navigation bar-->
     <ion-nav-buttons side="left">
         <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
@@ -16,21 +16,14 @@
     <ion-content scroll="false">
         <!--list section-->
         <md-list>
-            <md-subheader class="md-warn">The setting will change Expense View</md-subheader>
-            <md-list-item class="md-list-item-default" ng-click="navigateTo('app.expense',true)">
-                <i class="fa fa-play"></i>
+            <md-list-item class="md-list-item-default" ng-click="">
+                <i class="fa fa-lock"></i>
 
-                <p>Enable Row Animation</p>
+                <p>Şifre Değiştir</p>
             </md-list-item>
-            <md-list-item class="md-list-item-default" ng-click="navigateTo('app.expense',false)">
-                <i class="fa fa-stop"></i>
-
-                <p>Disable Row Animation</p>
-            </md-list-item>
-
-            <md-subheader class="md-warn">Kullanıcı İşlemleri</md-subheader>
+            <md-divider></md-divider>
             <md-list-item class="md-list-item-default" ng-click="logout()">
-                <i class="fa fa-play"></i>
+                <i class="fa fa-sign-out"></i>
 
                 <p>Çıkış</p>
             </md-list-item>

@@ -283,8 +283,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
         //Learn more about material theme: https://material.angularjs.org/latest/#/Theming/01_introduction
         $mdThemingProvider
             .theme('default')
-            .primaryPalette('indigo')
-            .accentPalette('pink');
+            .primaryPalette('light-blue')
+            .accentPalette('red');
 
         appPrimaryColor = $mdColorPalette[$mdThemingProvider._THEMES.default.colors.primary.name]["500"]; //Use for get base color of theme.
 
@@ -393,14 +393,29 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             .state('app.profile', {
                 url: "/profile/{username}",
                 params:{
-                    isAnimated:true
+                    isAnimated:true,
+                    message: null
                 },
                 views: {
                     'menuContent': {
                         templateUrl: "templates/user/profile/html/profile.html",
                         controller: "profileDashboardCtrl"
                     }
-                }
+                },
+                cache: false
+            })
+            .state('app.profile-update', {
+                url: "/profile-update",
+                params:{
+                    isAnimated:true
+                },
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/user/profile/html/profile-update.html",
+                        controller: "profileUpdateCtrl"
+                    }
+                },
+                cache: false
             })
             .state('app.profileSetting', {
                 url: "/profileSetting",

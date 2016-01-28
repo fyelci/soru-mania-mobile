@@ -1,0 +1,81 @@
+<!--View Information-->
+<!--View name : Contract Detail-->
+<!--Controller name : contractDetailCtrl-->
+<!--Controller path : www/templates/application-storage/sqLite/js/controllers.js-->
+<!--State name : app.contractdetail-->
+<!--URL : #app/profile-update-->
+
+<ion-view title="Profil Güncelleme">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons> <!--end left button on navigation bar-->
+
+    <!--contract detail section-->
+    <form name="contractForm">
+        <ion-content id="contract-details-content">
+            <!--contract detail input section-->
+            <md-input-container md-no-float>
+                <i class="ion-android-mail"></i>
+                <input ng-model="settingsAccount.email" name="email" placeholder="Email" readonly>
+            </md-input-container>
+
+            <md-input-container md-no-float>
+                <i class="ion-android-person"></i>
+                <input ng-model="settingsAccount.firstName" name="firstName" required placeholder="* Adınız (zorunlu)">
+            </md-input-container>
+            <md-input-container md-no-float>
+                <i class="ion-android-people"></i>
+                <input ng-model="settingsAccount.lastName" name="lastName" required placeholder="* Soyadınız (zorunlu)">
+            </md-input-container>
+
+            <md-input-container md-no-float>
+                <i class="fa fa-rocket"></i>
+                <input ng-model="settingsAccount.userTarget" name="userTarget" required placeholder="Hedefiniz (Örn: Sınıf Öğretmenliği)">
+            </md-input-container>
+
+            <div class="row">
+                <div class="col-20">
+                    <i class="ion-android-checkmark-circle"></i>
+                </div>
+                <div class="col-66 custom-select-box">
+                    <md-select ng-model="selectedPreparingFor.id" aria-label="md-option" placeholder="Hazırlandığınız Sınav">
+                        <md-option ng-repeat="preparingFor in preparingFors" ng-value="preparingFor">{{preparingFor.name}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <i class="fa fa-graduation-cap"></i>
+                </div>
+                <div class="col-66 custom-select-box">
+                    <md-select ng-model="selectedUserGraduateStatus.id" aria-label="md-option" placeholder="Mezuniyet Durumunuz">
+                        <md-option ng-repeat="userGraduateStatus in userGraduateStatuses" ng-value="userGraduateStatus">{{userGraduateStatus.name}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <i class="ion-ios-glasses-outline"></i>
+                </div>
+                <div class="col-66 custom-select-box">
+                    <md-select ng-model="selectedUsertype.id" aria-label="md-option" placeholder="Kullanıcı Tipi">
+                        <md-option ng-repeat="userType in userTypes" ng-value="userType">{{userType.name}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+            <!--end contract detail input section-->
+
+
+        </ion-content>
+        <div class="footer-fab-bar">
+            <a class="md-button md-accent md-fab fab-footer" ng-click="save()"
+               aria-label="Contract Form Actions">
+                <i class="ion-checkmark"></i>
+            </a>
+        </div>
+    </form><!--end contract detail section-->
+
+</ion-view>

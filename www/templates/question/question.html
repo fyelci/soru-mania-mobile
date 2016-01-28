@@ -14,22 +14,45 @@
     </ion-nav-buttons> <!--end left button on navigation bar-->
 
     <!--product detail section-->
-    <ion-content id="product-detail-content" class="fade-in">
+    <ion-content id="product-detail-content">
         <md-content class="md-padding">
             <div id="product-detail-tab-product">
                 <!--pin section-->
                 <div class="pin">
                     <img ng-src="{{question.mediaUrl}}" ng-click="showQuestionImage()"/>
 
+
+                    <!--header section-->
+                    <div class="row header">
+                        <div class="col-20">
+                            <img ng-src="{{question.user.profileImageUrl}}" class="user-img" ng-click="goToUserProfile(question.user.login)"/>
+                        </div>
+                        <div class="col-40">
+                           <span class="name" ng-click="goToUserProfile(question.user.login)">
+                                {{question.user.fullName}}
+                           </span>
+                                    <br/>
+                           <span class="datetime">
+                               {{question.readableCreateDate}}
+                           </span>
+                        </div>
+                        <div class="col-40 category-text">
+                           <span>
+                               {{question.lessonName}}
+                           </span>
+                            <br/>
+                           <span>
+                               {{question.categoryName}}
+                           </span>
+                        </div>
+                    </div><!--end header section-->
+
+
                     <p>
                         {{question.detail}}
                     </p>
 
                     <div class="pin-footer">
-                        <span class="">Sınav: {{question.categoryName}}</span>
-                        <br/>
-                        <span class="">Ders: {{question.lessonName}}</span>
-                        <br/>
                         <span>Zorluk ({{question.rateAvg}}/5): </span> <rating ng-model="rating.rate" max="rating.max"></rating>
                         {{question.rateCount}} oylama
                     </div>

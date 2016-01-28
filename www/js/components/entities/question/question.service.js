@@ -15,4 +15,19 @@ appServices
             },
             'update': { method:'PUT' }
         });
+    })
+    .factory('AskedQuestionsService', function ($resource, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/questions/asked/:userId', {}, {
+            'query': { method: 'GET', isArray: true}
+        });
+    })
+    .factory('AnsweredQuestionsService', function ($resource, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/questions/answered/:userId', {}, {
+            'query': { method: 'GET', isArray: true}
+        });
+    })
+    .factory('WatchedQuestionsService', function ($resource, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/questions/watched/:userId', {}, {
+            'query': { method: 'GET', isArray: true}
+        });
     });

@@ -5,19 +5,21 @@
 <!--State name : app.expense-->
 <!--URL : #app/expense-->
 
-<ion-view title="Expense" id="expense-dashboard">
+<ion-view title="Profil" id="expense-dashboard">
 
     <!--right button on navigation bar-->
     <ion-nav-buttons side="right">
-        <md-button class="md-icon-button ion-nav-button-right" ng-click="goToSetting()"
-                   aria-label="Setting">
+        <md-button class="md-icon-button ion-nav-button-right"
+                   ng-click="goToSetting()"
+                   aria-label="Setting"
+                   ng-if="isOwnProfile">
             <i class="ion-android-more-vertical"></i>
         </md-button>
     </ion-nav-buttons> <!--end right button on navigation bar-->
 
     <!--expense toolbar section-->
     <md-toolbar class="bar-subheader md-tall md-primary toolbar-expense">
-        <div class="user-main">
+        <div class="user-main" ng-click="getBasicInfo()">
             
             <img class="user-img" ng-src="{{user.profileImageUrl}}"/>
 
@@ -25,116 +27,148 @@
 
             <h2>{{user.login}}</h2>
         </div>
-        <a class="md-button md-accent md-fab fab-toolbar-medium" aria-label="Add">
-            <i class="icon ion-plus"></i>
-        </a>
     </md-toolbar><!--end expense toolbar section-->
 
     <!--expense content section-->
     <ion-content id="expense-dashboard-content">
 
-        <!--Below code it will disable animation to better performance-->
-        <div ng-if="!isAnimated" class="list-expense-menu">
-            <div class="list-expense-menu-item"  ng-click="doSomeThing()">
-                <div class="row">
-                    <div class="col-20">
-                        <i class="fa fa-money"></i>
-                    </div>
-                    <div class="col-80 menu">
-                        <p class="header">Add Budget</p>
+        <div class="menu-panel">
+            <div class="row">
+                <div class="col-33" ng-click="getQuestions(1)">
 
-                        <p class="detail">Add your budget to start saving.</p>
-                    </div>
+                    <p><i class="fa fa-question-circle"></i> Soruları</p>
+                </div>
+                <div class="col-33" ng-click="getQuestions(2)">
+
+
+                    <p><i class="fa fa-check-square-o"></i> Cevapları</p>
+                </div>
+                <div class="col-33" ng-click="getQuestions(3)">
+                    <p><i class="fa fa-eye"></i> İzledikleri</p>
                 </div>
             </div>
-            <div class="list-expense-menu-item"  ng-click="doSomeThing()">
-                <div class="row">
-                    <div class="col-20">
-                        <i class="fa fa-sign-in"></i>
-                    </div>
-                    <div class="col-80 menu">
-                        <p class="header">Expense History</p>
-
-                        <p class="detail">View expense history report</p>
-                    </div>
+            <div class="row">
+                <div class="col-50" ng-click="getUsers(5)">
+                    <p><i class="fa fa-users"></i> <strong>75</strong> Takipçi</p>
+                </div>
+                <div class="col-50" ng-click="getUsers(4)">
+                    <p><i class="fa fa-user"></i> <strong>112</strong> Takip Ettiği</p>
                 </div>
             </div>
-            <div class="list-expense-menu-item"  ng-click="doSomeThing()">
-                <div class="row">
-                    <div class="col-20">
-                        <i class="fa fa-inbox"></i>
-                    </div>
-                    <div class="col-80 menu">
-                        <p class="header">Export to e-Mail</p>
+        </div><!--end panel section-->
 
-                        <p class="detail">Export expense to e-Mail</p>
+        <!--User Basic Info-->
+        <div id="profileBasicUserInfo" ng-show="basicInfoVisible">
+            <md-list id="device-information-content">
+                <md-list-item class="row">
+                    <div class="col-50 title">
+                        Soru Mania Puanı
                     </div>
-                </div>
-            </div>
-            <div class="list-expense-menu-item"  ng-click="doSomeThing()">
-                <div class="row">
-                    <div class="col-20">
-                        <i class="fa fa-line-chart"></i>
+                    <div class="col-50">
+                        : {{user.totalScore}}
                     </div>
-                    <div class="col-80 menu">
-                        <p class="header">Summary Report</p>
-
-                        <p class="detail">View summary report.</p>
+                </md-list-item>
+                <md-list-item class="row">
+                    <div class="col-50 title">
+                        Hazırlandığı Sınav
                     </div>
-                </div>
-            </div>
+                    <div class="col-50">
+                        : {{user.preparingForName}}
+                    </div>
+                </md-list-item>
+                <md-list-item class="row">
+                    <div class="col-50 title">
+                        Mezuniyet Durumu
+                    </div>
+                    <div class="col-50">
+                        : {{user.userGraduateStatusName}}
+                    </div>
+                </md-list-item>
+                <md-list-item class="row">
+                    <div class="col-50 title">
+                        Sınav Hedefi
+                    </div>
+                    <div class="col-50">
+                        : {{user.userTarget}}
+                    </div>
+                </md-list-item>
+                <md-list-item class="row">
+                    <div class="col-50 title">
+                        Kullanıcı Tipi
+                    </div>
+                    <div class="col-50">
+                        : {{user.userTypeName}}
+                    </div>
+                </md-list-item>
+            </md-list>
         </div>
 
-        <!--Below code it will show animation when selecting row.-->
-        <md-list ng-if="isAnimated">
-            <md-list-item class="row" ng-click="doSomeThing()">
-                <div class="col-20 icon">
-                    <i class="fa fa-money"></i>
-                </div>
-                <div class="col-80 menu">
-                    <p class="header">Add Budget</p>
+        <div id="profileUserList" ng-show="userListVisible">
+            <md-list>
+                <div ng-repeat="usr in userList">
+                    <md-list-item class="row">
+                            <div class="col-20">
+                                <img ng-src="{{usr.profileImageUrl}}" class="user-img"/>
+                            </div>
+                            <div class="col-50 user-list-menu">
+                                <p class="header">{{usr.fullName}}</p>
 
-                    <p class="detail">Add your budget to start saving.</p>
-                </div>
-            </md-list-item>
-            <md-divider></md-divider>
+                                <p class="detail">{{usr.login}}</p>
+                            </div>
+                            <div class="col-33">
+                                <a href="" class="md-raised md-button md-default-theme">
+                                    <i class="fa fa-user-plus"></i> Takip Et</a>
+                            </div>
+                    </md-list-item>
 
-            <md-list-item class="row" ng-click="doSomeThing()">
-                <div class="col-20 icon">
-                    <i class="fa fa-sign-in"></i>
+                    <md-divider></md-divider>
                 </div>
-                <div class="col-80 menu">
-                    <p class="header">Expense History</p>
 
-                    <p class="detail">View expense history report</p>
+            </md-list>
+        </div>
+
+        <!--question list section-->
+        <div class="location-list" id="profileQuestionList" ng-show="questionListVisible">
+            <!--location item section-->
+            <div class="location-item" ng-repeat="question in questions">
+                <div class="location-img"
+                     ng-click="goToQuestion(question.id)"
+                     style="background-image:url('{{question.mediaUrl}}')">
+
                 </div>
-            </md-list-item>
-            <md-divider></md-divider>
+                <div class="location-content row">
+                    <div class="col-50">
+                        <h1>
+                            {{question.user.fullName}}
+                        </h1>
 
-            <md-list-item class="row" ng-click="doSomeThing()">
-                <div class="col-20 icon">
-                    <i class="fa fa-inbox"></i>
+                        <p>
+                            <i class="fa fa-clock-o"></i> {{question.readableCreateDate}}
+                        </p>
+                    </div>
+                    <div class="col-50">
+                        <span class="text-add">{{question.lessonName}}</span>
+                        <span class="text-add">{{question.categoryName}}</span>
+                    </div>
                 </div>
-                <div class="col-80 menu">
-                    <p class="header">Export to e-Mail</p>
+            </div><!--end location item section-->
 
-                    <p class="detail">Export expense to e-Mail</p>
-                </div>
-            </md-list-item>
-            <md-divider></md-divider>
+        </div><!--end question list section-->
 
-            <md-list-item class="row" ng-click="doSomeThing()">
-                <div class="col-20 icon">
-                    <i class="fa fa-line-chart"></i>
-                </div>
-                <div class="col-80 menu">
-                    <p class="header">Summary Report</p>
+        <ion-infinite-scroll
+                ng-if="hasMoreData"
+                icon="ion-loading-c"
+                on-infinite="infiniteLoad()">
+        </ion-infinite-scroll>
 
-                    <p class="detail">View summary report.</p>
-                </div>
-            </md-list-item>
-            <md-divider></md-divider>
-
-        </md-list>
     </ion-content><!--end expense content section-->
+
+    <!--edit button section-->
+    <div class="footer-fab-bar" ng-if="isOwnProfile">
+        <a class="md-button md-accent md-fab fab-footer" ui-sref="app.profile-update" aria-label="Edit">
+            <i class="icon ion-edit"></i>
+        </a>
+    </div>
+    <!--end edit button section-->
+
 </ion-view>

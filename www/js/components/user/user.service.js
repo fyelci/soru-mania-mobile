@@ -15,4 +15,14 @@ appServices
                 'update': { method:'PUT' },
                 'delete':{ method:'DELETE'}
             });
+        })
+    .factory('FollowingUserService', function ($resource) {
+        return $resource('api/users/following/:userId', {}, {
+            'query': {method: 'GET', isArray: true}
         });
+    })
+    .factory('FollowerUserService', function ($resource) {
+        return $resource('api/users/follower/:userId', {}, {
+            'query': {method: 'GET', isArray: true}
+        });
+    });

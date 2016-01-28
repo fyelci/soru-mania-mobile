@@ -1,6 +1,6 @@
 //This is Controller for Dialog box.
 appControllers.constant('ApiInfo', {
-    pageSize : 5,
+    pageSize : 10,
     url: "/"     //Development
     //url: "http://10.0.2.2:8080/"    //Android
     //url: "http://localhost:8080/"   //Ios
