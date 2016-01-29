@@ -314,8 +314,12 @@ md-sidenav {
   transition: all .2s ease;
 
   //header section
-  .header {
+  .user-header {
     // padding: 10px 20px 4px 26px;
+    div {
+      margin: 0px;
+    }
+
     color: $color_gray;
     img.user-img {
       border-radius: 50%;
@@ -386,6 +390,18 @@ md-sidenav {
       text-align: center;
     }
   }
+
+  .rate-row {
+    margin: 0px;
+    div {
+      margin: 0px;
+      text-align: left;
+      font-size: 14px;
+    }
+  }
+
+
+
 }//end pin section
 
 //toolbar section
@@ -1384,7 +1400,7 @@ md-sidenav {
 
 //product tab product section
 #product-detail-tab-product {
-  margin: 10px 20px;
+  margin: 5px 5px;
   //pin section
   div.pin {
     //text-align: center;
@@ -1402,12 +1418,35 @@ md-sidenav {
 //product tab comment section
 #product-detail-tab-comment {
   margin: 10px 20px;
+
+  //header section
+  .user-header {
+    // padding: 10px 20px 4px 26px;
+    color: $color_gray;
+    img.user-img {
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      margin-top: 0;
+    }
+    .name {
+      font-weight: 500;
+    }
+    .datetime {
+      font-size: 12px;
+    }
+  }//end header section
+
   //pin section
   div.pin {
-    text-align: center;
+    //text-align: center;
     display: block;
     margin: auto;
-    width: 90%;
+    //width: 90%;
+
+    div {
+      margin: 0px;
+    }
 
     a {
       width: 92%;
@@ -2601,9 +2640,15 @@ md-sidenav {
         color: $color_white;
         font-weight: 500;
         font-size: 11px;
-        width: 65px;
+        //width: 65px;
         text-align: center;
         margin-top: 15px;
+      }
+      .question-icon-summary {
+        text-align: center;
+        margin-top: 15px;
+        color: $color_gray;
+        font-size: 12px;
       }
     }
   }//end location item section
@@ -2882,10 +2927,10 @@ md-sidenav {
 
 
 .custom-star-icon {
-  font-size: 15px;
   color : red;
+  margin-left: -15px;
 }
 
 ul.rating li i {
-  font-size: 15px;
+  font-size: 24px;
 }

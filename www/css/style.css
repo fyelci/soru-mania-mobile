@@ -172,18 +172,20 @@ md-sidenav {
   padding-bottom: 5px;
   opacity: 1;
   transition: all .2s ease; }
-  .pin .header {
+  .pin .user-header {
     color: gray; }
-    .pin .header img.user-img {
+    .pin .user-header div {
+      margin: 0px; }
+    .pin .user-header img.user-img {
       border-radius: 50%;
       width: 45px;
       height: 45px;
       margin-top: 0; }
-    .pin .header .col-50 .name {
+    .pin .user-header .col-50 .name {
       font-weight: 500; }
-    .pin .header .col-50 .datetime {
+    .pin .user-header .col-50 .datetime {
       font-size: 12px; }
-    .pin .header .category-text {
+    .pin .user-header .category-text {
       color: #d73d32; }
   .pin img {
     width: 100%;
@@ -217,6 +219,12 @@ md-sidenav {
       font-size: 11px;
       width: 40px;
       text-align: center; }
+  .pin .rate-row {
+    margin: 0px; }
+    .pin .rate-row div {
+      margin: 0px;
+      text-align: left;
+      font-size: 14px; }
 
 .toolbar-medium {
   max-height: 160px !important;
@@ -843,7 +851,7 @@ md-sidenav {
       margin: 0; }
 
 #product-detail-tab-product {
-  margin: 10px 20px; }
+  margin: 5px 5px; }
   #product-detail-tab-product div.pin {
     display: block;
     margin: auto;
@@ -853,11 +861,22 @@ md-sidenav {
 
 #product-detail-tab-comment {
   margin: 10px 20px; }
+  #product-detail-tab-comment .user-header {
+    color: gray; }
+    #product-detail-tab-comment .user-header img.user-img {
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      margin-top: 0; }
+    #product-detail-tab-comment .user-header .name {
+      font-weight: 500; }
+    #product-detail-tab-comment .user-header .datetime {
+      font-size: 12px; }
   #product-detail-tab-comment div.pin {
-    text-align: center;
     display: block;
-    margin: auto;
-    width: 90%; }
+    margin: auto; }
+    #product-detail-tab-comment div.pin div {
+      margin: 0px; }
     #product-detail-tab-comment div.pin a {
       width: 92%; }
 
@@ -1631,9 +1650,13 @@ md-sidenav {
       color: white;
       font-weight: 500;
       font-size: 11px;
-      width: 65px;
       text-align: center;
       margin-top: 15px; }
+    .location-list .location-item .location-content .question-icon-summary {
+      text-align: center;
+      margin-top: 15px;
+      color: gray;
+      font-size: 12px; }
 
 #cube-feed-content {
   background-color: #f6f6f6; }
@@ -1816,8 +1839,8 @@ md-sidenav {
     opacity: 0; } }
 
 .custom-star-icon {
-  font-size: 15px;
-  color: red; }
+  color: red;
+  margin-left: -15px; }
 
 ul.rating li i {
-  font-size: 15px; }
+  font-size: 24px; }

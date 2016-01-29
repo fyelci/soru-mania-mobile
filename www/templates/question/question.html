@@ -23,11 +23,11 @@
 
 
                     <!--header section-->
-                    <div class="row header">
+                    <div class="row user-header">
                         <div class="col-20">
                             <img ng-src="{{question.user.profileImageUrl}}" class="user-img" ng-click="goToUserProfile(question.user.login)"/>
                         </div>
-                        <div class="col-40">
+                        <div class="col-33">
                            <span class="name" ng-click="goToUserProfile(question.user.login)">
                                 {{question.user.fullName}}
                            </span>
@@ -36,7 +36,7 @@
                                {{question.readableCreateDate}}
                            </span>
                         </div>
-                        <div class="col-40 category-text">
+                        <div class="col-33 category-text">
                            <span>
                                {{question.lessonName}}
                            </span>
@@ -44,6 +44,9 @@
                            <span>
                                {{question.categoryName}}
                            </span>
+                        </div>
+                        <div class="col-10">
+                            <a href="" ng-click="openReportDialog($event)" class=""><i class="fa fa-flag"></i></a>
                         </div>
                     </div><!--end header section-->
 
@@ -53,14 +56,20 @@
                     </p>
 
                     <div class="pin-footer">
-                        <span>Zorluk ({{question.rateAvg}}/5): </span> <rating ng-model="rating.rate" max="rating.max"></rating>
-                        {{question.rateCount}} oylama
                     </div>
+                        <div class="row rate-row">
+                            <div class=" col-50">
+                                <span>Zorluk ({{question.rateAvg}}/5): {{question.rateCount}} oylama</span>
+                            </div>
+                            <div class=" col-50">
+                                <rating ng-model="rating.rate" max="rating.max"></rating>
+                            </div>
+                        </div>
+
                     <a class="md-raised md-warn md-button md-default-theme"
                        ng-click="answerQuestion()">
                         Soruyu Cevapla
                     </a>
-                    <a href="" ng-click="openReportDialog($event)" class=""><i class="fa fa-flag"></i></a>
                 </div>  <!--end pin section-->
 
             </div>
@@ -75,24 +84,39 @@
             </div>
 
             <div id="product-detail-tab-comment" ng-repeat="comment in question.commentList">
-                <div>
-                    <p>{{comment.user.login}}</p>
-                </div>
-                <!--pin section-->
                 <div class="pin">
-                    <img ng-src="{{comment.mediaUrl}}" ng-click="showCommentImages($index)"/>
+                    <div class="row user-header">
+                        <div class="col-10">
+                            <img ng-src="{{comment.user.profileImageUrl}}" class="user-img" ng-click="goToUserProfile(comment.user.login)"/>
+                        </div>
+                        <div class="col-50">
+                           <span class="name" ng-click="goToUserProfile(comment.user.login)">
+                                {{comment.user.fullName}}
+                           </span>
+                        </div>
+                        <div class="col-33">
+                            <span class="datetime">
+                               {{comment.readableCreateDate}}
+                           </span>
 
-                    <p>
-                        {{comment.text}}
-                    </p>
-                    <a href="" ng-click="openReportDialog($event, comment.id)" class=""><i class="fa fa-flag"></i></a>
-
-                    <!--
-                    <a class="md-raised md-warn md-button md-default-theme"
-                       ng-click="replyToComment(comment)">
-                        Yorum Yap
-                    </a>
-                    -->
+                        </div>
+                        <div class="col-10">
+                            <a href="" ng-click="openReportDialog($event, comment.id)" class=""><i class="fa fa-flag"></i></a>
+                        </div>
+                    </div>
+                    <!--pin section-->
+                    <div class="row">
+                        <img ng-src="{{comment.mediaUrl}}" ng-click="showCommentImages($index)"/>
+                        <!--
+                        <a class="md-raised md-warn md-button md-default-theme"
+                           ng-click="replyToComment(comment)">
+                            Yorum Yap
+                        </a>
+                        -->
+                    </div>
+                    <div class="row">
+                        <p>{{comment.text}}</p>
+                    </div>
                 </div>  <!--end pin section-->
 
             </div>

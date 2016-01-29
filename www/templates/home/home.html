@@ -70,7 +70,7 @@
 
                 </div>
                 <div class="location-content row">
-                    <div class="col-50">
+                    <div class="col-33">
                         <h1>
                             {{question.user.fullName}}
                         </h1>
@@ -79,9 +79,14 @@
                             <i class="fa fa-clock-o"></i> {{question.readableCreateDate}}
                         </p>
                     </div>
-                    <div class="col-50">
-                        <span class="text-add">{{question.lessonName}}</span>
-                        <span class="text-add">{{question.categoryName}}</span>
+                    <div class="col-33 question-icon-summary">
+                        <i class="fa fa-comment-o"></i> {{question.commentCount}}
+                        &nbsp;
+                        <i class="fa fa-star-o"></i> {{question.rateAvg}}
+                    </div>
+                    <div class="col-33">
+                        <span class="text-add">&nbsp; {{question.lessonName}} &nbsp;</span>
+                        <span class="text-add">&nbsp; {{question.categoryName}} &nbsp;</span>
                     </div>
                 </div>
             </div><!--end location item section-->
