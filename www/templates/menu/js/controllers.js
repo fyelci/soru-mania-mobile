@@ -10,10 +10,18 @@ appControllers.controller('menuCtrl', function ($scope, $timeout, $mdUtil, $mdSi
     });
 
     $scope.$on('userAuthSuccess', function() {
+        $scope.refreshUser();
+    });
+
+    $scope.$on('userAccountUpdateSuccess', function() {
+        $scope.refreshUser();
+    });
+
+    $scope.refreshUser = function () {
         Principal.identity().then(function(account) {
             $scope.account = account;
         });
-    });
+    }
 
     $scope.$on('userLogoutSuccess', function() {
         $scope.account = {};

@@ -17,6 +17,15 @@
     <form name="contractForm">
         <ion-content id="contract-details-content">
             <!--contract detail input section-->
+            <div class="row">
+                <div class="col-50 profile-photo-col">
+                    <img class="user-img" ng-src="{{settingsAccount.profileImageUrl}}"/>
+                </div>
+                <div class="col-50 profile-photo-col">
+                    <i class="fa fa-camera add-photo" ng-click="selectImage()"></i>
+                </div>
+            </div>
+
             <md-input-container md-no-float>
                 <i class="ion-android-mail"></i>
                 <input ng-model="settingsAccount.email" name="email" placeholder="Email" readonly>
@@ -41,8 +50,8 @@
                     <i class="ion-android-checkmark-circle"></i>
                 </div>
                 <div class="col-66 custom-select-box">
-                    <md-select ng-model="selectedPreparingFor.id" aria-label="md-option" placeholder="Hazırlandığınız Sınav">
-                        <md-option ng-repeat="preparingFor in preparingFors" ng-value="preparingFor">{{preparingFor.name}}</md-option>
+                    <md-select ng-model="settingsAccount.preparingForId" aria-label="md-option" placeholder="Hazırlandığınız Sınav">
+                        <md-option ng-repeat="preparingFor in preparingFors" ng-value="preparingFor.id">{{preparingFor.name}}</md-option>
                     </md-select>
                 </div>
             </div>
@@ -51,8 +60,8 @@
                     <i class="fa fa-graduation-cap"></i>
                 </div>
                 <div class="col-66 custom-select-box">
-                    <md-select ng-model="selectedUserGraduateStatus.id" aria-label="md-option" placeholder="Mezuniyet Durumunuz">
-                        <md-option ng-repeat="userGraduateStatus in userGraduateStatuses" ng-value="userGraduateStatus">{{userGraduateStatus.name}}</md-option>
+                    <md-select ng-model="settingsAccount.userGraduateStatusId" aria-label="md-option" placeholder="Mezuniyet Durumunuz">
+                        <md-option ng-repeat="userGraduateStatus in userGraduateStatuses" ng-value="userGraduateStatus.id">{{userGraduateStatus.name}}</md-option>
                     </md-select>
                 </div>
             </div>
@@ -61,8 +70,8 @@
                     <i class="ion-ios-glasses-outline"></i>
                 </div>
                 <div class="col-66 custom-select-box">
-                    <md-select ng-model="selectedUsertype.id" aria-label="md-option" placeholder="Kullanıcı Tipi">
-                        <md-option ng-repeat="userType in userTypes" ng-value="userType">{{userType.name}}</md-option>
+                    <md-select ng-model="settingsAccount.userTypeId" aria-label="md-option" placeholder="Kullanıcı Tipi">
+                        <md-option ng-repeat="userType in userTypes" ng-value="userType.id">{{userType.name}}</md-option>
                     </md-select>
                 </div>
             </div>

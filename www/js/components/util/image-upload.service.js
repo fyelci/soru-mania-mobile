@@ -48,7 +48,7 @@ appServices
                         if(percentage > 100) {
                             percentage = 100;
                         }
-                        $ionicLoading.show({template : 'Soru Yükleniyor : ' + percentage + '%'});
+                        $ionicLoading.show({template : 'Resim Yükleniyor : ' + percentage + '%'});
                     });
             }
             return deferred.promise;

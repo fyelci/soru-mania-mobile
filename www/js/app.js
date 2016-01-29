@@ -367,7 +367,8 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                         templateUrl: "templates/question/question.html",
                         controller: "QuestionController"
                     }
-                }
+                },
+                cache: false
             })
             .state('app.ask-question', {
                 url: "/ask-question",

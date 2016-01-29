@@ -791,44 +791,62 @@ md-sidenav {
 #contract-details-content {
   margin-top: 20px;
   //contract detail input section
-  //md-input-container {
-    i {
-      font-size: 22px;
-      color: $color_gray;
-      position: absolute;
-      margin-left: 30px;
-      margin-top: 5px;
 
-      &.mail {
-        margin-left: 88%;
-      }
+  .profile-photo-col {
+    align-content: center;
+    text-align: center;
+  }
 
-      &.tel {
-        margin-left: 75%;
-      }
+  img.user-img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-top: 0;
+  }
 
-      &.message {
-        margin-left: 88%;
-      }
+  i {
+    font-size: 22px;
+    color: $color_gray;
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 5px;
+
+    &.mail {
+      margin-left: 88%;
     }
 
-    input {
-      font-size: 16px;
-      margin-left: 60px;
-      background-color: transparent !important;
-
-      &.input-tel {
-        width: 200px;
-      }
-
-      &.input-mail {
-        width: 64%;
-      }
+    &.tel {
+      margin-left: 75%;
     }
+
+    &.message {
+      margin-left: 88%;
+    }
+
+  }
+
+  input {
+    font-size: 16px;
+    margin-left: 60px;
+    background-color: transparent !important;
+
+    &.input-tel {
+      width: 200px;
+    }
+
+    &.input-mail {
+      width: 64%;
+    }
+  }
   .custom-select-box {
     margin-top: -25px;
   }
-  //}//end contract detail input section
+
+  .add-photo {
+    font-size: 55px;
+    margin-left: -75px;
+    margin-top: 15px;
+  }
 
   //contract switch section
   md-switch {
@@ -2140,7 +2158,6 @@ md-sidenav {
       width: 80px;
       height: 80px;
       margin-top: 0;
-
     }
   }//end toolbar section
 
