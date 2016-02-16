@@ -22,12 +22,6 @@
                 <md-tab label="Cevap">
                     <md-content id="comment-detail-tab-detail">
 
-                        <div class="row ask-question-detail-text">
-                            <md-input-container md-no-float="" class="md-list-item-full-width" md-no-float>
-                                <textarea ng-model="comment.text" placeholder=" Cevapla ilgili açıklama..."></textarea>
-                            </md-input-container>
-                        </div>
-
                         <div class="row" ng-show="!imgURI">
                             <br/>
                             <div class="col-25">
@@ -44,6 +38,11 @@
 
                         <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
 
+                        <div class="row ask-question-detail-text">
+                            <md-input-container md-no-float="" class="md-list-item-full-width" md-no-float>
+                                <textarea ng-model="comment.text" placeholder=" Cevapla ilgili açıklama..."></textarea>
+                            </md-input-container>
+                        </div>
 
                         <div class="row" id="ask-question-send-button">
                             <div class="col-25">

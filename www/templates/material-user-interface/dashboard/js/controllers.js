@@ -3,7 +3,6 @@ appControllers.controller('dashboardCtrl', function ($scope, $timeout, $state,$s
 
     //$scope.isAnimated is the variable that use for receive object data from state params.
     //For enable/disable row animation.
-    $scope.isAnimated =  $stateParams.isAnimated;
 
     // navigateTo is for navigate to other page 
     // by using targetPage to be the destination state. 
@@ -18,7 +17,7 @@ appControllers.controller('dashboardCtrl', function ($scope, $timeout, $state,$s
                 });
                 $state.go(stateName);
             }
-        }, ($scope.isAnimated  ? 300 : 0));
+        }, (300));
     }; // End of navigateTo.
 
     // goToSetting is for navigate to Dashboard Setting page

@@ -1,0 +1,37 @@
+<!--View Information-->
+<!--View name : Expense Dashboard-->
+<!--Controller name : expenseDashboardCtrl-->
+<!--Controller path : www/templates/themes/expense-dashboard/js/controllers.js-->
+<!--State name : app.expense-->
+<!--URL : #app/expense-->
+
+<ion-view title="Liderlik Tablosu" id="leaderboard-page">
+
+    <ion-content id="leaderboard-content">
+
+        <div class="general-user-list">
+            <md-list>
+                <div ng-repeat="usr in userList">
+                    <md-list-item class="row">
+                        <div class="col-20">
+                            <img ng-src="{{usr.profileImageUrl}}" class="user-img"/>
+                        </div>
+                        <div class="col-50 user-list-menu">
+                            <p class="header">{{usr.fullName}}</p>
+
+                            <p class="detail">{{usr.login}}</p>
+                        </div>
+                        <div class="col-33">
+                            {{usr.totalScore}} puan
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                </div>
+
+            </md-list>
+        </div>
+
+
+    </ion-content>
+</ion-view>

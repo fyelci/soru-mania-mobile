@@ -394,7 +394,6 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             .state('app.profile', {
                 url: "/profile/{username}",
                 params:{
-                    isAnimated:true,
                     message: null
                 },
                 views: {
@@ -408,7 +407,6 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
             .state('app.profile-update', {
                 url: "/profile-update",
                 params:{
-                    isAnimated:true
                 },
                 views: {
                     'menuContent': {
@@ -424,6 +422,15 @@ angular.module('starter', ['ionic','ngIOS9UIWebViewPatch', 'starter.controllers'
                     'menuContent': {
                         templateUrl: "templates/user/profile/html/profile-setting.html",
                         controller: "profileDashboardSettingCtrl"
+                    }
+                }
+            })
+            .state('app.leaderboard', {
+                url: "/leaderboard",
+                views: {
+                    'menuContent': {
+                        templateUrl: "templates/user/leaderboard/leaderboard.html",
+                        controller: "leaderboardCtrl"
                     }
                 }
             })

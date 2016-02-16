@@ -1,8 +1,8 @@
 'use strict';
 
 appServices
-    .factory('User', function ($resource) {
-        return $resource('api/users/:login', {}, {
+    .factory('User', function ($resource, ApiInfo) {
+        return $resource(ApiInfo.url + 'api/users/:login', {}, {
                 'query': {method: 'GET', isArray: true},
                 'get': {
                     method: 'GET',
@@ -23,6 +23,11 @@ appServices
     })
     .factory('FollowerUserService', function ($resource) {
         return $resource('api/users/follower/:userId', {}, {
+            'query': {method: 'GET', isArray: true}
+        });
+    })
+    .factory('LeaderboardService', function ($resource) {
+        return $resource('api/users/leaderboard', {}, {
             'query': {method: 'GET', isArray: true}
         });
     });

@@ -1,6 +1,8 @@
 // Controller of expense dashboard page.
 appControllers.controller('profileDashboardCtrl', function ($scope,$state,$stateParams, $mdToast, User, Principal, ApiInfo, AskedQuestionsService, WatchedQuestionsService, AnsweredQuestionsService, FollowingUserService, FollowerUserService) {
 
+    //TODO Bu sayfa sadece boş olarak eklendi, tamamlanması gerekiyor.
+
     //Google Analytics
     if(typeof analytics !== 'undefined') {
         analytics.trackView('Profil');
@@ -11,7 +13,6 @@ appControllers.controller('profileDashboardCtrl', function ($scope,$state,$state
     });
 
     $scope.isOwnProfile = false;
-    $scope.isAnimated =  true;
 
     //Ekranda hangi panellerin görünür olduğunu bu parametreler ayarlar
     $scope.questionListVisible =  false;
